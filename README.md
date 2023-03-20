@@ -3,7 +3,15 @@
 This Repo provides an in-depth analysis of the challenges involved in optimizing the performance of an microservices application through autoscaling, as well as potential solutions and best practices to address these challenges.
 
 ### Prerequisites
-...
+- *Kubernetes Cluster:* Single-node cluster with at least **12** **vCPU**, **12288 MB** (Megabytes) of RAM and **32** **GB** (Gigabytes) of storage memory.
+- *Istio Service Mesh* installed.
+- *Tools* deployed.
+	* Prometheus (required), Grafana and Kiali (optional).
+	* Prometheus Adapter
+	* Kube State Metrics
+	* Node Exporter
+	
+	
 ### Load Testing
 The folder *loadtesting* contains the files needed for load testing of the application.
 
@@ -25,5 +33,7 @@ These scripts make use of a series of purpose-built modules within *my_modules*,
 These dashboards can be used to monitor various metrics during load testing to identify anomalies and performance issues in the system.
  
 ### Data Analysis
+
+### Istio Service Mesh
 
 ### Tools
