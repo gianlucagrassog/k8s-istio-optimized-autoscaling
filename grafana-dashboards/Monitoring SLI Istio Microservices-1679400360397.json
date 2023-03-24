@@ -1,0 +1,681 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": [],
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "gauge",
+      "name": "Gauge",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.0.1"
+    },
+    {
+      "type": "panel",
+      "id": "histogram",
+      "name": "Histogram",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "description": " The dashboard is designed to display the Service Level Indicators (SLIs) of the microservices, which help to measure the quality of the service provided by the microservices.",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "iteration": 1679400304206,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "orange",
+            "mode": "continuous-BlYlRd"
+          },
+          "custom": {
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 0
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 800
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "{destination_workload=\"frontend\", destination_workload_namespace=\"default\"}"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 18,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "bucketOffset": 0.1,
+        "bucketSize": 0.1,
+        "combine": true,
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(histogram_quantile(0.50, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le)) / 1000) or histogram_quantile(0.50, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "key": "Q-7697d4db-1c80-46a1-9f56-ba109c240dba-0",
+          "refId": "A",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(histogram_quantile(0.90, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le)) / 1000) or histogram_quantile(0.90, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "key": "Q-91a30753-e821-4c98-a07c-d1a3034ed731-1",
+          "refId": "B",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(histogram_quantile(0.95, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace,destination_service, le)) / 1000) or histogram_quantile(0.95, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload,destination_service, destination_workload_namespace, le))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "key": "Q-eaebb151-4c88-4798-a5dd-8960b6be5b7d-2",
+          "refId": "C",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(histogram_quantile(0.99, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le)) / 1000) or histogram_quantile(0.99, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "key": "Q-cc375047-83b4-4dc0-9f06-b3ba9640788b-3",
+          "refId": "D",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(histogram_quantile(0.50, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le)) / 1000) or histogram_quantile(0.50, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "key": "Q-63ddf8c5-db12-471d-8d30-5a20b5551c59-4",
+          "refId": "E",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(histogram_quantile(0.90, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le)) / 1000) or histogram_quantile(0.90, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "key": "Q-f958243b-c573-44d7-90ac-8c74f4f51559-5",
+          "refId": "F",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(histogram_quantile(0.95, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le)) / 1000) or histogram_quantile(0.95, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "key": "Q-f8877b6d-406b-4d91-904e-6217b172896a-6",
+          "refId": "G",
+          "step": 2
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "(histogram_quantile(0.99, sum(irate(istio_request_duration_milliseconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le)) / 1000) or histogram_quantile(0.99, sum(irate(istio_request_duration_seconds_bucket{reporter=\"destination\",destination_workload=~\"$destination_workload\"}[1m])) by (destination_workload, destination_workload_namespace, le))",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "key": "Q-41bb35ae-5d54-4e0c-9f84-8e6ad0886d65-7",
+          "refId": "H",
+          "step": 2
+        }
+      ],
+      "title": "Response Time Distribution",
+      "type": "histogram"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 5,
+        "x": 0,
+        "y": 15
+      },
+      "id": 5,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^\\{app=\"loadgenerator\", connection_security_policy=\"unknown\", destination_app=\"frontend\", destination_canonical_revision=\"latest\", destination_canonical_service=\"frontend\", destination_cluster=\"Kubernetes\", destination_principal=\"spiffe://cluster\\.local/ns/default/sa/default\", destination_service=\"frontend\\.default\\.svc\\.cluster\\.local\", destination_service_name=\"frontend\", destination_service_namespace=\"default\", destination_version=\"unknown\", destination_workload=\"frontend\", destination_workload_namespace=\"default\", instance=\"10\\.244\\.3\\.170:15020\", job=\"kubernetes\\-pods\", namespace=\"default\", pod=\"loadgenerator\\-6746795f8b\\-98dq6\", pod_template_hash=\"6746795f8b\", reporter=\"source\", request_protocol=\"http\", response_code=\"200\", response_flags=\"\\-\", security_istio_io_tlsMode=\"istio\", service_istio_io_canonical_name=\"loadgenerator\", service_istio_io_canonical_revision=\"latest\", source_app=\"loadgenerator\", source_canonical_revision=\"latest\", source_canonical_service=\"loadgenerator\", source_cluster=\"Kubernetes\", source_principal=\"spiffe://cluster\\.local/ns/default/sa/default\", source_workload=\"loadgenerator\", source_workload_namespace=\"default\"\\}$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "histogram_quantile(0.99,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=~\"$source\",destination_app=~\"$destination_workload\"}[20m]) )\n",
+          "refId": "A"
+        }
+      ],
+      "title": "99th Percentile Response Time",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 5,
+        "x": 5,
+        "y": 15
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^\\{app=\"loadgenerator\", connection_security_policy=\"unknown\", destination_app=\"frontend\", destination_canonical_revision=\"latest\", destination_canonical_service=\"frontend\", destination_cluster=\"Kubernetes\", destination_principal=\"spiffe://cluster\\.local/ns/default/sa/default\", destination_service=\"frontend\\.default\\.svc\\.cluster\\.local\", destination_service_name=\"frontend\", destination_service_namespace=\"default\", destination_version=\"unknown\", destination_workload=\"frontend\", destination_workload_namespace=\"default\", instance=\"10\\.244\\.3\\.170:15020\", job=\"kubernetes\\-pods\", namespace=\"default\", pod=\"loadgenerator\\-6746795f8b\\-98dq6\", pod_template_hash=\"6746795f8b\", reporter=\"source\", request_protocol=\"http\", response_code=\"200\", response_flags=\"\\-\", security_istio_io_tlsMode=\"istio\", service_istio_io_canonical_name=\"loadgenerator\", service_istio_io_canonical_revision=\"latest\", source_app=\"loadgenerator\", source_canonical_revision=\"latest\", source_canonical_service=\"loadgenerator\", source_cluster=\"Kubernetes\", source_principal=\"spiffe://cluster\\.local/ns/default/sa/default\", source_workload=\"loadgenerator\", source_workload_namespace=\"default\"\\}$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "histogram_quantile(0.90,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=~\"$source\",destination_app=~\"$destination_workload\"}[20m]) )\n",
+          "refId": "A"
+        }
+      ],
+      "title": "90th Percentile Response Time",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 3,
+        "x": 10,
+        "y": 15
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^\\{app=\"loadgenerator\", connection_security_policy=\"unknown\", destination_app=\"frontend\", destination_canonical_revision=\"latest\", destination_canonical_service=\"frontend\", destination_cluster=\"Kubernetes\", destination_principal=\"spiffe://cluster\\.local/ns/default/sa/default\", destination_service=\"frontend\\.default\\.svc\\.cluster\\.local\", destination_service_name=\"frontend\", destination_service_namespace=\"default\", destination_version=\"unknown\", destination_workload=\"frontend\", destination_workload_namespace=\"default\", instance=\"10\\.244\\.3\\.170:15020\", job=\"kubernetes\\-pods\", namespace=\"default\", pod=\"loadgenerator\\-6746795f8b\\-98dq6\", pod_template_hash=\"6746795f8b\", reporter=\"source\", request_protocol=\"http\", response_code=\"200\", response_flags=\"\\-\", security_istio_io_tlsMode=\"istio\", service_istio_io_canonical_name=\"loadgenerator\", service_istio_io_canonical_revision=\"latest\", source_app=\"loadgenerator\", source_canonical_revision=\"latest\", source_canonical_service=\"loadgenerator\", source_cluster=\"Kubernetes\", source_principal=\"spiffe://cluster\\.local/ns/default/sa/default\", source_workload=\"loadgenerator\", source_workload_namespace=\"default\"\\}$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=~\"$source\",destination_app=~\"$destination_workload\"}[20m]) )\n",
+          "refId": "A"
+        }
+      ],
+      "title": "50th Percentile Response Time",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 5,
+        "x": 13,
+        "y": 15
+      },
+      "id": 9,
+      "options": {
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "last"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.0.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "sum(rate(istio_requests_total{reporter=\"source\", response_code!~\"5.*\"}[20m]))\n\n/\n\nsum(rate(istio_requests_total{reporter=\"source\"}[20m]))\n",
+          "refId": "A"
+        }
+      ],
+      "title": "Availability ",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${DS_PROMETHEUS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 25
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${DS_PROMETHEUS}"
+          },
+          "expr": "sum(rate(istio_request_duration_milliseconds_sum{reporter='source',source_app='loadgenerator',destination_app='frontend'}[30s])) by (source_app, destination_app) / sum(rate(istio_request_duration_milliseconds_count{reporter='source', source_app='loadgenerator',destination_app='frontend'}[30s])) by (source_app, destination_app)",
+          "refId": "A"
+        }
+      ],
+      "title": "Response Time Rate",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 36,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "frontend",
+          "value": "frontend"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "destination_workload",
+        "options": [
+          {
+            "selected": true,
+            "text": "frontend",
+            "value": "frontend"
+          }
+        ],
+        "query": "frontend",
+        "skipUrlSync": false,
+        "type": "custom"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "loadgenerator",
+          "value": "loadgenerator"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "source",
+        "options": [
+          {
+            "selected": true,
+            "text": "loadgenerator",
+            "value": "loadgenerator"
+          }
+        ],
+        "query": "loadgenerator",
+        "queryValue": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "2023-03-12T11:42:00.000Z",
+    "to": "2023-03-12T11:58:00.000Z"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Monitoring SLI Istio Microservices",
+  "uid": "GWapu-a4z",
+  "version": 12,
+  "weekStart": ""
+}

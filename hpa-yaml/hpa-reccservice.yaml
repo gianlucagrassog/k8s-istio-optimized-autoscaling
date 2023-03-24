@@ -1,0 +1,34 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: recommendationservice
+  namespace: default
+spec:
+  minReplicas: 1
+  maxReplicas: 3
+  # behavior:
+  #     scaleDown:
+  #       stabilizationWindowSeconds: 60
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 80
+
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: recommendationservice
+
+status:
+  currentMetrics:
+  - resource:
+      current:
+        averageUtilization: 2
+        averageValue: 5m
+      name: cpu
+    type: Resource
+  currentReplicas: 1
+  desiredReplicas: 1
