@@ -66,7 +66,6 @@ def plot_cpu(intersection_time, cpu_df):
         cpu_ts[pod] = ts
     
     cpu_ts['recommendationservice']['value'].values[0]=cpu_ts['recommendationservice']['value'].values[0]*2
-    #Verifica
     cpu_ts['checkoutservice']['value'].values[0]=cpu_ts['checkoutservice']['value'].values[0]*4
 
     # Sort
@@ -150,6 +149,7 @@ def plot_cpu_80(cpu_df):
     for index, row in ts.iterrows():
         if(row['value']> 80):
             return row['timestamp']
+        
 def plot_cpu_frontend(cpu_df):
     ts = cpu_df[cpu_df['pod'].str.contains('frontend')]
    

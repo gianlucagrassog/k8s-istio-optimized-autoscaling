@@ -28,5 +28,6 @@ for i in range(10000):
 
 # plotting a graph 
 plt.hist(nums, bins = 200) 
+plt.xlabel('values')
 plt.show()
 

@@ -9,7 +9,7 @@ from prometheus_api_client import PrometheusConnect, MetricSnapshotDataFrame
 import pandas as pd
 import time
 
-
+# Import my_modules
 from my_modules.prometheus_metric_exporter import collect_metric, collect_save_metric
 from my_modules.promql_constants import *
 from my_modules.operations import *
@@ -18,7 +18,6 @@ from my_modules.operations import *
 prometheus = PrometheusConnect(url='http://localhost:9090', disable_ssl=True)
 logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
-
 
 def check_sli(start_time):
 
