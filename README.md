@@ -19,7 +19,7 @@ The folder *loadtesting* contains the files needed for load testing of the appli
  *Script that is executed after the identification of the microservice on which to apply the HPA autoscaler, it allows us to find the number of replicas to be applied by carrying out load testing using a ramp signal iteratively, assessing whether the insertion of additional replica results in a performance improvement in terms of SLI.*
  
  - **`load_testing_custom_shape.py`**:  Allows load testing using a custom input signal shape;
-	  This shape must be obtained from monitoring the application, seeing how the production load behaves, request per seconds over time. The signal can be replaced by editing the *locust_file.py* file in the *loadgenerator_images/loadgenerator_v3* folder.   At the end of load testing, metrics are exported from prometheus and the SLIs defined in the SLO document are displayed.
+	  This shape must be obtained from monitoring the application, seeing how the production load behaves, request per seconds over time. The signal can be replaced by editing the *locust_file.py* file in the *loadgenerator_src/loadgenerator_v3* folder.   At the end of load testing, metrics are exported from prometheus and the SLIs defined in the SLO document are displayed.
  
  - **`load_testing_ramp.py`**:  Allows load testing using a RAMP signal shape;  At the end of load testing, metrics are exported from prometheus and the SLIs defined in the SLO document are displayed and saved.
 
@@ -28,19 +28,11 @@ These scripts make use of a series of purpose-built modules within *my_modules*,
  - `prometheus_metric_exporter.py`: This file can be used to export and optionally save metrics from a Prometheus server in CSV files.
  - `promql_constants.py` : All the constants used to perform promQL queries are defined within it, they are the metrics that are extracted from Prometheus
  - `operations.py`:  File containing all the operations that make it possible to load, modify  and apply Load Generator files; and also exec commands .
-<<<<<<< HEAD
-=======
-
-Inside the *src* folder there is the code of the load generator images used for load testing of the application
->>>>>>> d4420672d38857a90b4abf56bcd096d1d6ef3a34
 
 Inside the *src* folder there is the code of the load generator images used for load testing of the application
 
-<<<<<<< HEAD
 ## Grafana Dashboard
 
-=======
->>>>>>> d4420672d38857a90b4abf56bcd096d1d6ef3a34
  The `grafana-dashboards` folder contains the the JSON files for Grafana dashboards, which can be used to monitor various metrics related to an application or system (i.e. the four golden signals).
 These dashboards can be used to monitor various metrics during load testing to identify anomalies and performance issues in the system.
  
@@ -48,8 +40,11 @@ These dashboards can be used to monitor various metrics during load testing to i
  -  *Monitoring Four Golden Signals*: Dashboard used during load test execution to monitor the application.
  
  
-<<<<<<< HEAD
 ## Data Analysis
+The folder *data-analysis* contains the files needed for analyze the results of the load tests.
+
+ - **`find_rt_weight_of_ms.py`**:
+
 
 ## Istio Service Mesh
 
@@ -58,13 +53,6 @@ These dashboards can be used to monitor various metrics during load testing to i
 ## Load Generator
 
 ## Tools
-=======
-### Data Analysis
-
-### Istio Service Mesh
-
-### Custom Metrics Autoscaler
->>>>>>> d4420672d38857a90b4abf56bcd096d1d6ef3a34
 
 ### Prometheus and Grafana 
 ```
@@ -74,7 +62,6 @@ kubectl apply -f tools/grafana.yaml
 ```
 kubectl port-forward svc/prometheus -n istio-system 9090
 
-<<<<<<< HEAD
 kubectl port-forward svc/grafana -n istio-system 3000
 ```
 #### Kube State metrics
@@ -104,37 +91,3 @@ helm install node-exporter prometheus-community/prometheus-node-exporter
  - [Unict](https://www.unict.it/)
  - [Corso di laurea magistrale in  Ingegneria informatica](https://www.dieei.unict.it/corsi/lm-32)
 
-=======
-#### Prometheus and Grafana 
-```
-kubectl apply -f tools/prometheus.yaml
-kubectl apply -f tools/grafana.yaml
-```
-```
-kubectl port-forward svc/prometheus -n istio-system 9090
-
-kubectl port-forward svc/grafana -n istio-system 3000
-```
-#### Kube State metrics
-
-```
-git clone https://github.com/kubernetes/kube-state-metrics
-
-kubectl apply -f kube-state-metrics/examples/standard/
-```
-
-
-```
-- job_name: 'kube-state-metrics'
-	static_configs:
-		- targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
-```
-#### Node Exporter
-```
-helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-
-helm repo update
-
-helm install node-exporter prometheus-community/prometheus-node-exporter
-```
->>>>>>> d4420672d38857a90b4abf56bcd096d1d6ef3a34
