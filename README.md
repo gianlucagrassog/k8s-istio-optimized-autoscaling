@@ -28,11 +28,19 @@ These scripts make use of a series of purpose-built modules within *my_modules*,
  - `prometheus_metric_exporter.py`: This file can be used to export and optionally save metrics from a Prometheus server in CSV files.
  - `promql_constants.py` : All the constants used to perform promQL queries are defined within it, they are the metrics that are extracted from Prometheus
  - `operations.py`:  File containing all the operations that make it possible to load, modify  and apply Load Generator files; and also exec commands .
+<<<<<<< HEAD
+=======
+
+Inside the *src* folder there is the code of the load generator images used for load testing of the application
+>>>>>>> d4420672d38857a90b4abf56bcd096d1d6ef3a34
 
 Inside the *src* folder there is the code of the load generator images used for load testing of the application
 
+<<<<<<< HEAD
 ## Grafana Dashboard
 
+=======
+>>>>>>> d4420672d38857a90b4abf56bcd096d1d6ef3a34
  The `grafana-dashboards` folder contains the the JSON files for Grafana dashboards, which can be used to monitor various metrics related to an application or system (i.e. the four golden signals).
 These dashboards can be used to monitor various metrics during load testing to identify anomalies and performance issues in the system.
  
@@ -40,6 +48,7 @@ These dashboards can be used to monitor various metrics during load testing to i
  -  *Monitoring Four Golden Signals*: Dashboard used during load test execution to monitor the application.
  
  
+<<<<<<< HEAD
 ## Data Analysis
 
 ## Istio Service Mesh
@@ -49,8 +58,54 @@ These dashboards can be used to monitor various metrics during load testing to i
 ## Load Generator
 
 ## Tools
+=======
+### Data Analysis
+
+### Istio Service Mesh
+
+### Custom Metrics Autoscaler
+>>>>>>> d4420672d38857a90b4abf56bcd096d1d6ef3a34
 
 ### Prometheus and Grafana 
+```
+kubectl apply -f tools/prometheus.yaml
+kubectl apply -f tools/grafana.yaml
+```
+```
+kubectl port-forward svc/prometheus -n istio-system 9090
+
+<<<<<<< HEAD
+kubectl port-forward svc/grafana -n istio-system 3000
+```
+#### Kube State metrics
+
+```
+git clone https://github.com/kubernetes/kube-state-metrics
+
+kubectl apply -f kube-state-metrics/examples/standard/
+```
+
+
+```
+- job_name: 'kube-state-metrics'
+	static_configs:
+		- targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
+```
+#### Node Exporter
+```
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+helm repo update
+
+helm install node-exporter prometheus-community/prometheus-node-exporter
+```
+## University
+
+ - [Unict](https://www.unict.it/)
+ - [Corso di laurea magistrale in  Ingegneria informatica](https://www.dieei.unict.it/corsi/lm-32)
+
+=======
+#### Prometheus and Grafana 
 ```
 kubectl apply -f tools/prometheus.yaml
 kubectl apply -f tools/grafana.yaml
@@ -82,8 +137,4 @@ helm repo update
 
 helm install node-exporter prometheus-community/prometheus-node-exporter
 ```
-## University
-
- - [Unict](https://www.unict.it/)
- - [Corso di laurea magistrale in  Ingegneria informatica](https://www.dieei.unict.it/corsi/lm-32)
-
+>>>>>>> d4420672d38857a90b4abf56bcd096d1d6ef3a34
