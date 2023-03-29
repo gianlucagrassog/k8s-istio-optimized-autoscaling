@@ -29,7 +29,7 @@ These scripts make use of a series of purpose-built modules within *my_modules*,
  - `promql_constants.py` : All the constants used to perform promQL queries are defined within it, they are the metrics that are extracted from Prometheus
  - `operations.py`:  File containing all the operations that make it possible to load, modify  and apply Load Generator files; and also exec commands .
 
-Inside the *src* folder there is the code of the load generator images used for load testing of the application
+Inside the *loadgenerator_src* folder there is the code of the load generator images used for load testing of the application
 
 ## Grafana Dashboard
 
