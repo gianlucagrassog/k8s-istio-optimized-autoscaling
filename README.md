@@ -8,8 +8,8 @@ This Repo provides an in-depth analysis of the challenges involved in optimizing
 - *Tools* deployed.
 	* Prometheus (required), Grafana and Kiali (optional).
 	* Prometheus Adapter (required for custom metric HPA)
-	* Kube State Metrics
-	* Node Exporter
+	* Kube State Metrics (required for monitor replicas)
+	* Node Exporter (required for node cpu monitoring)
 	
 	
 ## Load Testing
@@ -29,7 +29,12 @@ These scripts make use of a series of purpose-built modules within *my_modules*,
  - `promql_constants.py` : All the constants used to perform promQL queries are defined within it, they are the metrics that are extracted from Prometheus
  - `operations.py`:  File containing all the operations that make it possible to load, modify  and apply Load Generator files; and also exec commands .
 
-Inside the *loadgenerator_src* folder there is the code of the load generator images used for load testing of the application
+Inside the *loadgenerator_src* folder there is the code of the load generator images used for load testing of the application.
+Three versions are available:
+
+ - *loadgenerator_v1*  
+ - *loadgenerator_v2 (RAMP)*: Uses a 10-minute ramp signal
+ - *loadgenerator_v3 (Custom Shape)*: The scrypt uses a custom signal, proving the possibility of replicating a **real production load**, this load can be obtained in terms of requests per second by monitoring the application with the grafana dashboards provided.
 
 ## Grafana Dashboard
 
@@ -37,20 +42,21 @@ Inside the *loadgenerator_src* folder there is the code of the load generator im
 These dashboards can be used to monitor various metrics during load testing to identify anomalies and performance issues in the system.
  
  - *Monitoring SLI Istio Microservices* : Dashboard to monitor the measured SLIs, these SLIs were described in an SLO document.
- -  *Monitoring Four Golden Signals*: Dashboard used during load test execution to monitor the application.
+ -  *Monitoring Four Golden Signals*: Dashboard used before and during load test execution to monitor the application.
  
  
 ## Data Analysis
 The folder *data-analysis* contains the files needed for analyze the results of the load tests.
 
- - **`find_rt_weight_of_ms.py`**:
+ - **`find_rt_weight_of_ms.py`**: This script allows to find out the impact of a microservice on latency, i.e. the percentage weight on high-level latency.
+From the results of load testing scripts (*latency_by_app*), it analyses the latencies of flows between *pairs of microservices*.
+It obtains the weight each time stamp of the simulation and then relates it to the high-level latency value. As output, it provides a percentage value for each microservice
 
-
+ - **`data_plot.py`**: Thanks to this scrypt, data obtained as results of load testing scrypts can be plotted.
+ 
 ## Istio Service Mesh
 
 ## Custom Metrics Autoscaler
-
-## Load Generator
 
 ## Tools
 
@@ -66,13 +72,13 @@ kubectl port-forward svc/grafana -n istio-system 3000
 ```
 #### Kube State metrics
 
+Clone and apply manifests
 ```
 git clone https://github.com/kubernetes/kube-state-metrics
 
 kubectl apply -f kube-state-metrics/examples/standard/
 ```
-
-
+Add to scrape_configs (already configured in the file of prometheus provided)
 ```
 - job_name: 'kube-state-metrics'
 	static_configs:
@@ -90,4 +96,4 @@ helm install node-exporter prometheus-community/prometheus-node-exporter
 
  - [Unict](https://www.unict.it/)
  - [Corso di laurea magistrale in  Ingegneria informatica](https://www.dieei.unict.it/corsi/lm-32)
-
+ 
