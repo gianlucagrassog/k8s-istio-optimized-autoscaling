@@ -64,7 +64,7 @@ def check_errors(threshold=3):
 
 def main(deploy):
     logging.info('Starting load tests')
-    p99_last, p90_last, p50_last, availability_last = 0
+    p99_last, p90_last, p50_last, availability_last = 0,0,0,0
 
     for num_replica in range(1, 10):
         logging.info(
