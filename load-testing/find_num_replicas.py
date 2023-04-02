@@ -87,7 +87,7 @@ def main(deploy):
         # Get current SLI metrics
         p99_current, p90_current, p50_current, availability_current = check_sli(
             start_time)
-        if p99_last != 0 and p90_last != 0 and p50_last != 0 and availability_last != 0:
+        if p99_current != 0 and p99_current != 0 and p50_current != 0 and availability_current != 0:
 
             # Calculate the percentage change for each metric
             p99_percent_change = ((p99_current - p99_last) / p99_last) * 100
