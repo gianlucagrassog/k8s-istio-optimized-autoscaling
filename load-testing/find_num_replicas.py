@@ -38,8 +38,7 @@ def check_sli(start_time):
     percentile90 = percentile90['value'].iloc[-1]
     percentile50 = percentile50['value'].iloc[-1]
     availability = availability['value'].iloc[-1]
-    logging.info(
-        f"##### SLI Check ##### \n - 99th Percentile: {percentile99} ms\n - 90th Percentile: {percentile90} ms\n - 50th Percentile: {percentile50} ms\n - Availability:{availability}")
+    logging.info(f"##### SLI Check ##### \n - 99th Percentile: {percentile99} ms\n - 90th Percentile: {percentile90} ms\n - 50th Percentile: {percentile50} ms\n - Availability:{availability}")
 
     # Return Percentile and Availability
     return percentile99, percentile90, percentile50, availability
@@ -89,7 +88,7 @@ def main(deploy):
         # Get current SLI metrics
         p99_current, p90_current, p50_current, availability_current = check_sli(
             start_time)
-        if p99_current != 0 and p99_current != 0 and p50_current != 0 and availability_current != 0:
+        if p99_last != 0 and p90_last != 0 and p50_last != 0 and availability_last != 0:
 
             # Calculate the percentage change for each metric
             p99_percent_change = ((p99_current - p99_last) / p99_last) * 100
@@ -107,6 +106,10 @@ def main(deploy):
             logging.info(f"- p90: {p90_percent_change}%")
             logging.info(f"- p50: {p50_percent_change}%")
             logging.info(f"- availability: {p50_percent_change}%")
+        p99_last = p99_current
+        p90_last = p90_current
+        p50_last = p50_current
+        availability_last = availability_current
 
 
 if __name__ == '__main__':
