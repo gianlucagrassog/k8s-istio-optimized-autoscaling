@@ -17,6 +17,8 @@ from my_modules.operations import *
 # Set up Prometheus API client and logging
 prometheus = PrometheusConnect(url='http://localhost:9090', disable_ssl=True)
 logging.basicConfig(
+    filename="log_find_num_replicas",
+    filemode='a',
     format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 def check_sli(start_time):
