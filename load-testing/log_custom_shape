@@ -11,3 +11,31 @@
 2023-03-24 12:16:59,877 - INFO - Collect Metric and Save Result
 2023-03-24 12:17:00,361 - INFO - Collect Metric and Save Result
 2023-03-24 12:17:01,107 - INFO - Load test finished
+2023-04-01 13:05:58,915 - INFO - Starting load test with custom shape signal for 20 Minutes
+2023-04-01 13:06:13,927 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-04-01 13:22:59,194 - INFO - Starting load test with custom shape signal for 20 Minutes
+2023-04-01 13:23:14,207 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-04-01 13:43:19,679 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-01 13:43:25,235 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 4618.197093709428 ms
+ - 90th Percentile: 2318.055773320003 ms
+ - 50th Percentile: 453.1173867712723 ms
+ - Availability:1.0
+2023-04-01 13:43:25,236 - INFO - Checking for 5xx errors with threshold 3
+2023-04-01 13:43:25,240 - INFO - Retrieve and save a metrics values 
+2023-04-01 13:43:25,241 - INFO - Collect Metric and Save Result
+2023-04-01 13:43:25,773 - INFO - Collect Metric and Save Result
+2023-04-01 13:43:26,542 - INFO - Load test finished
+2023-04-01 14:05:23,189 - INFO - Starting load test with custom shape signal for 20 Minutes
+2023-04-01 14:05:38,203 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-04-01 14:25:43,559 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-01 14:25:49,156 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 1353.0759740910123 ms
+ - 90th Percentile: 600.0176150581563 ms
+ - 50th Percentile: 80.8138290674252 ms
+ - Availability:1.0
+2023-04-01 14:25:49,156 - INFO - Checking for 5xx errors with threshold 3
+2023-04-01 14:25:49,164 - INFO - Retrieve and save a metrics values 
+2023-04-01 14:25:49,164 - INFO - Collect Metric and Save Result
+2023-04-01 14:25:50,139 - INFO - Collect Metric and Save Result
+2023-04-01 14:25:51,580 - INFO - Load test finished
