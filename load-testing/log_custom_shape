@@ -39,3 +39,9 @@
 2023-04-01 14:25:49,164 - INFO - Collect Metric and Save Result
 2023-04-01 14:25:50,139 - INFO - Collect Metric and Save Result
 2023-04-01 14:25:51,580 - INFO - Load test finished
+2023-04-02 13:50:05,390 - INFO - Starting load test with custom shape signal for 20 Minutes
+2023-04-02 13:50:20,403 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-04-02 14:32:25,656 - INFO - Starting load test with custom shape signal for 20 Minutes
+2023-04-02 14:32:40,675 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-04-02 14:58:07,132 - INFO - Starting load test with custom shape signal for 20 Minutes
+2023-04-02 14:58:22,137 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML

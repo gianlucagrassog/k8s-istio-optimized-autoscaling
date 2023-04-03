@@ -1,0 +1,120 @@
+2023-04-02 11:46:53,174 - INFO - Starting load tests
+2023-04-02 11:46:53,174 - INFO - Starting load test with 1 replica on recommendationservice
+2023-04-02 11:47:08,188 - INFO - Scale Deploy recommendationservice with 1 replicas
+2023-04-02 11:47:28,356 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 11:57:33,716 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-02 11:57:39,473 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 2726.0692501935287 ms
+ - 90th Percentile: 936.5670299829459 ms
+ - 50th Percentile: 165.87057865470445 ms
+ - Availability:1.0
+2023-04-02 11:57:39,474 - INFO - There were improvements in SLIs!
+2023-04-02 11:57:39,474 - INFO - - p99: inf%
+2023-04-02 11:57:39,474 - INFO - - p90: inf%
+2023-04-02 11:57:39,474 - INFO - - p50: inf%
+2023-04-02 11:57:39,474 - INFO - - availability: inf%
+2023-04-02 11:57:39,474 - INFO - Starting load test with 2 replica on recommendationservice
+2023-04-02 11:57:54,488 - INFO - Scale Deploy recommendationservice with 2 replicas
+2023-04-02 11:58:14,653 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 12:08:20,120 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-02 12:08:25,601 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 989.0298076886666 ms
+ - 90th Percentile: 415.0395564865353 ms
+ - 50th Percentile: 98.32922240355549 ms
+ - Availability:1.0
+2023-04-02 12:08:25,601 - INFO - There were improvements in SLIs!
+2023-04-02 12:08:25,601 - INFO - - p99: inf%
+2023-04-02 12:08:25,601 - INFO - - p90: inf%
+2023-04-02 12:08:25,601 - INFO - - p50: inf%
+2023-04-02 12:08:25,601 - INFO - - availability: inf%
+2023-04-02 12:08:25,601 - INFO - Starting load test with 3 replica on recommendationservice
+2023-04-02 12:08:40,616 - INFO - Scale Deploy recommendationservice with 3 replicas
+2023-04-02 12:09:00,729 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 12:19:06,092 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-02 12:19:11,606 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 958.2753406978659 ms
+ - 90th Percentile: 411.3860292367692 ms
+ - 50th Percentile: 108.32761699117523 ms
+ - Availability:1.0
+2023-04-02 12:19:11,606 - INFO - There were improvements in SLIs!
+2023-04-02 12:19:11,606 - INFO - - p99: inf%
+2023-04-02 12:19:11,606 - INFO - - p90: inf%
+2023-04-02 12:19:11,606 - INFO - - p50: inf%
+2023-04-02 12:19:11,606 - INFO - - availability: inf%
+2023-04-02 12:19:11,606 - INFO - Starting load test with 4 replica on recommendationservice
+2023-04-02 12:19:26,620 - INFO - Scale Deploy recommendationservice with 4 replicas
+2023-04-02 12:19:46,731 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 12:29:52,140 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-02 12:29:57,810 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 2784.297356726822 ms
+ - 90th Percentile: 446.98897271424187 ms
+ - 50th Percentile: 96.19533541794002 ms
+ - Availability:1.0
+2023-04-02 12:29:57,810 - INFO - There were improvements in SLIs!
+2023-04-02 12:29:57,811 - INFO - - p99: inf%
+2023-04-02 12:29:57,811 - INFO - - p90: inf%
+2023-04-02 12:29:57,811 - INFO - - p50: inf%
+2023-04-02 12:29:57,811 - INFO - - availability: inf%
+2023-04-02 12:29:57,811 - INFO - Starting load test with 5 replica on recommendationservice
+2023-04-02 12:30:12,826 - INFO - Scale Deploy recommendationservice with 5 replicas
+2023-04-02 12:30:32,940 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 12:40:38,312 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-02 12:40:43,859 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 984.2400924439178 ms
+ - 90th Percentile: 421.0492383009895 ms
+ - 50th Percentile: 98.70775515979561 ms
+ - Availability:1.0
+2023-04-02 12:40:43,860 - INFO - There were improvements in SLIs!
+2023-04-02 12:40:43,860 - INFO - - p99: inf%
+2023-04-02 12:40:43,860 - INFO - - p90: inf%
+2023-04-02 12:40:43,860 - INFO - - p50: inf%
+2023-04-02 12:40:43,860 - INFO - - availability: inf%
+2023-04-02 12:40:43,860 - INFO - Starting load test with 6 replica on recommendationservice
+2023-04-02 12:40:58,875 - INFO - Scale Deploy recommendationservice with 6 replicas
+2023-04-02 12:41:19,000 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 12:43:26,740 - INFO - Starting load tests
+2023-04-02 12:43:26,740 - INFO - Starting load test with 1 replica on currencyservice
+2023-04-02 12:43:41,752 - INFO - Scale Deploy currencyservice with 1 replicas
+2023-04-02 12:44:01,855 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 12:44:56,939 - INFO - Starting load tests
+2023-04-02 12:44:56,940 - INFO - Starting load test with 1 replica on currencyservice
+2023-04-02 12:45:11,955 - INFO - Scale Deploy currencyservice with 1 replicas
+2023-04-02 12:45:32,064 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 12:55:37,452 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-02 12:55:42,927 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 1854.350551601617 ms
+ - 90th Percentile: 716.0433277178474 ms
+ - 50th Percentile: 125.48028424691509 ms
+ - Availability:1.0
+2023-04-02 12:55:42,927 - INFO - Starting load test with 2 replica on currencyservice
+2023-04-02 12:55:57,939 - INFO - Scale Deploy currencyservice with 2 replicas
+2023-04-02 12:56:18,048 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 13:06:23,420 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-02 13:06:28,972 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 1838.2419295910674 ms
+ - 90th Percentile: 363.52292651787786 ms
+ - 50th Percentile: 64.0277792553282 ms
+ - Availability:1.0
+2023-04-02 13:06:28,972 - INFO - There were improvements in SLIs!
+2023-04-02 13:06:28,972 - INFO - - p99: -0.8686934623357224%
+2023-04-02 13:06:28,972 - INFO - - p90: -49.2317137181506%
+2023-04-02 13:06:28,972 - INFO - - p50: -48.9738331088437%
+2023-04-02 13:06:28,972 - INFO - - availability: -48.9738331088437%
+2023-04-02 13:06:28,972 - INFO - Starting load test with 3 replica on currencyservice
+2023-04-02 13:06:43,984 - INFO - Scale Deploy currencyservice with 3 replicas
+2023-04-02 13:07:04,176 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 13:17:09,668 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-02 13:17:16,299 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 3850.356026572613 ms
+ - 90th Percentile: 313.43360074912437 ms
+ - 50th Percentile: 57.0128965130817 ms
+ - Availability:1.0
+2023-04-02 13:17:16,299 - INFO - There were improvements in SLIs!
+2023-04-02 13:17:16,299 - INFO - - p99: 109.45861176331437%
+2023-04-02 13:17:16,299 - INFO - - p90: -13.778862931301289%
+2023-04-02 13:17:16,299 - INFO - - p50: -10.955998823999103%
+2023-04-02 13:17:16,299 - INFO - - availability: -10.955998823999103%
+2023-04-02 13:17:16,299 - INFO - Starting load test with 4 replica on currencyservice
+2023-04-02 13:17:31,315 - INFO - Scale Deploy currencyservice with 4 replicas
+2023-04-02 13:17:51,504 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-02 13:27:57,068 - INFO - Starting apply loadgenerator-reset.yaml YAML
