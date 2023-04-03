@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 from datetime import datetime
+from my_modules.data_csv import *
 
 
 def plot_all_latency(latency_df,ms_names):
@@ -50,6 +51,38 @@ def plot_by_destination(latency_df,destination, ms_names):
     plt.ylabel('Latency (ms)')
     plt.legend()
     plt.show()
+
+
+def compare_latencies(csv_1,sim_name1,csv_2,sim_name2):
+
+    # Read data from csv
+    latency_df_1 = read_data(csv_1)
+    latency_df_2 = read_data(csv_2)
+
+    ts1 = latency_df_1[(latency_df_1['source_app'] == 'loadgenerator') & (
+        latency_df_1['destination_app'] == 'frontend')]
+ 
+    ts2 = latency_df_2[(latency_df_2['source_app'] == 'loadgenerator') & (
+        latency_df_2['destination_app'] == 'frontend')]
+    # Drop Rows
+    ts1 = ts1[:-1]
+
+    time_range = np.arange(5, 1200, 5)
+
+    fig = plt.figure(figsize=(15, 15))
+    ax1 = fig.add_subplot(111)
+    ax1.plot(time_range, ts1['value'], label=f'RT 1:{sim_name1}')
+    ax1.plot(time_range, ts2['value'], label=f'RT 2:{sim_name2}')
+    ax1.set_xlabel('Time (s)')
+    ax1.set_ylabel('Response Time (ms)')
+
+    # make a legend for both plots
+    leg = ax1.legend()
+    # set the linewidth of each legend object
+    for legobj in leg.legendHandles:
+        legobj.set_linewidth(2.0)
+    plt.show()
+
 
 # def plot_cpu(cpu_df):
 

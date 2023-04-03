@@ -12,16 +12,23 @@ from my_modules.data_csv import *
 
 logging.basicConfig(level=logging.INFO)
 
-def main(latency_by_app_csv, ms_names):
+def main( ms_names):
     # # Read data from csv
-    latency_df = read_data(latency_by_app_csv)
+    # latency_df = read_data('./csv_results/latency_by_app_custom_shape_20230324121659.csv')
 
-    #  Plot all MS Latency
-    plot_all_latency(latency_df, ms_names)
-    plot_by_destination(latency_df,"frontend",ms_names)
+    # #  Plot all MS Latency
+    # plot_all_latency(latency_df, ms_names)
+    # plot_by_destination(latency_df,"frontend",ms_names)
+
+    # Compare Two Latency
+    compare_latencies('./csv_results/latency_by_app_custom_shape_20230324121659.csv',
+                      'Configurazione 1',
+                      './csv_results/latency_by_app_custom_shape_20230401142549.csv',
+                      'Configurazione 2')
+
 
 if __name__ == '__main__':
     ms_names = ["frontend", "adservice", "cartservice", "checkoutservice", "currencyservice", "emailservice",
                 "paymentservice", "loadgenerator", "productcatalogservice", "recommendationservice", "shippingservice", "redis-cart"]
 
-    main('./csv_results/latency_by_app_custom_shape_20230324121659.csv', ms_names)
+    main(ms_names)

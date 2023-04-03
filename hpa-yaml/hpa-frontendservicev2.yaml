@@ -6,9 +6,6 @@ metadata:
 spec:
   minReplicas: 1
   maxReplicas: 5
-  behavior:
-      scaleDown:
-        stabilizationWindowSeconds: 60
   metrics:
   - type: Pods
     pods:
@@ -16,7 +13,7 @@ spec:
         name: http_requests_restime_2m
       target:
         type: AverageValue
-        averageValue: 30000m # 300ms
+        averageValue: 15000m # 150ms
 
   scaleTargetRef:
     apiVersion: apps/v1
