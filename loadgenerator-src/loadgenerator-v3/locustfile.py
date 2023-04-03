@@ -71,7 +71,7 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
-    wait_time = lambda instance: random.gauss(6, 1) 
+    wait_time = lambda instance: random.gauss(5, 1) 
 
 class DoublePeak(LoadTestShape):
  
