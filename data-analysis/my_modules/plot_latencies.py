@@ -83,7 +83,36 @@ def compare_latencies(csv_1,sim_name1,csv_2,sim_name2):
         legobj.set_linewidth(2.0)
     plt.show()
 
+def filter_data_replicas(df):
+    return df[(df['deployment'] == 'frontend')]
 
+def compare_replicas(csv_1,sim_name1,csv_2,sim_name2):
+
+    # Read data from csv
+    replicas_df_1 = read_data(csv_1)
+    replicas_df_2 = read_data(csv_2)
+
+    replicas_1 = filter_data_replicas(replicas_df_1)
+    replicas_2 = filter_data_replicas(replicas_df_2)
+    
+    # Drop Rows
+    replicas_1= replicas_1[:-3]
+    replicas_2= replicas_2[:-3]
+    
+    time_range = np.arange(5, 1200, 5)
+
+    fig = plt.figure(figsize=(15, 15))
+    ax1 = fig.add_subplot(111)
+
+    ax1.plot(time_range, replicas_1['value'],  label=f'RT 1:{sim_name1}')
+    ax1.plot(time_range, replicas_2['value'],  label=f'RT 2:{sim_name2}')
+    ax1.set_xlabel('Time(s)')
+    ax1.set_ylabel('Available Replicas frontend (num)')
+    leg = ax1.legend()
+    # set the linewidth of each legend object
+    for legobj in leg.legendHandles:
+        legobj.set_linewidth(2.0)
+    plt.show()
 # def plot_cpu(cpu_df):
 
 #     cpu_dfs = {}
