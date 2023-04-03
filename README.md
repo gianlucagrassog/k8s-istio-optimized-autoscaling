@@ -15,11 +15,11 @@ This Repo provides an in-depth analysis of the challenges involved in optimizing
 ## Load Testing
 The folder *loadtesting* contains the files needed for load testing of the application.
  
- - **`find_num_replica.py`**: Used to find the number of pods that can be specified as the max number in the HPA. Enables load testing of the application using a ramp signal for 10 min iteratively, evaluating performance  in terms of SLI (Response Time Percentiles and Availability) when adding a replica to a specific deployment of a microservice. .
- *Script that is executed after the identification of the microservice on which to apply the HPA autoscaler, it allows us to find the number of replicas to be applied by carrying out load testing using a ramp signal iteratively, assessing whether the insertion of additional replica results in a performance improvement in terms of SLI.*
+ - **`find_num_replica.py`**: Used to find the number of pods that can be specified as the max number in the HPA. Enables load testing of the application using a ramp signal for 10 min iteratively, evaluating performance  in terms of SLI (Response Time Percentiles and Availability) when adding a replica to a specific deployment of a microservice.
+ *This script that is executed after the identification of the microservice on which to apply the HPA autoscaler, it allows to find the number of replicas to be applied by carrying out load testing using a ramp signal iteratively, assessing whether the insertion of additional replica results in a performance improvement in terms of SLI.*
  
  - **`load_testing_custom_shape.py`**:  Allows load testing using a custom input signal shape;
-	  This shape must be obtained from monitoring the application, seeing how the production load behaves, request per seconds over time. The signal can be replaced by editing the *locust_file.py* file in the *loadgenerator_src/loadgenerator_v3* folder.   At the end of load testing, metrics are exported from prometheus and the SLIs defined in the SLO document are displayed.
+	  This shape must be obtained from monitoring the application, seeing how the production load behaves, request per seconds over time. The signal can be replaced by editing the *locust_file.py* file in the *loadgenerator_src/loadgenerator_v3* folder.   At the end of load testing, metrics are exported from Prometheus and the SLIs defined in the SLO document are displayed.
  
  - **`load_testing_ramp.py`**:  Allows load testing using a RAMP signal shape;  At the end of load testing, metrics are exported from prometheus and the SLIs defined in the SLO document are displayed and saved.
 
@@ -34,7 +34,7 @@ Three versions are available:
 
  - *loadgenerator_v1*  
  - *loadgenerator_v2 (RAMP)*: Uses a 10-minute ramp signal
- - *loadgenerator_v3 (Custom Shape)*: The scrypt uses a custom signal, proving the possibility of replicating a **real production load**, this load can be obtained in terms of requests per second by monitoring the application with the grafana dashboards provided.
+ - *loadgenerator_v3 (Custom Shape)*: Uses a custom signal, proving the possibility of replicating a real production load, this load can be obtained in terms of requests per second by monitoring the application with the grafana dashboards provided.
 
 ## Grafana Dashboard
 
@@ -57,7 +57,30 @@ It obtains the weight each time stamp of the simulation and then relates it to t
 ## Istio Service Mesh
 
 ## Custom Metrics Autoscaler
+```
+prometheus:
+  url: http://prometheus.istio-system.svc
+  port: 9090
+  path: ""
 
+rules:
+  default: false
+  custom:
+    - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter="source"}'
+      seriesFilters:
+      - isNot: .*bucket
+      resources:
+        overrides:
+          namespace: 
+             resource: namespace
+          pod: 
+             resource: pod
+      name:
+        matches: ^(.*)
+        as: "http_requests_restime_2m"
+      metricsQuery: 'sum(rate(istio_request_duration_milliseconds_sum{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>) / sum(rate(istio_request_duration_milliseconds_count{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>)'
+
+```
 ## Tools
 
 ### Prometheus and Grafana 
