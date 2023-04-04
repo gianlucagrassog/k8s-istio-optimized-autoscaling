@@ -16,7 +16,7 @@ This Repo provides an in-depth analysis of the challenges involved in optimizing
 The folder *loadtesting* contains the files needed for load testing of the application.
  
  - **`find_num_replica.py`**: Used to find the number of pods that can be specified as the max number in the HPA. Enables load testing of the application using a ramp signal for 10 min iteratively, evaluating performance  in terms of SLI (Response Time Percentiles and Availability) when adding a replica to a specific deployment of a microservice.
- *This script that is executed after the identification of the microservice on which to apply the HPA autoscaler, it allows to find the number of replicas to be applied by carrying out load testing using a ramp signal iteratively, assessing whether the insertion of additional replica results in a performance improvement in terms of SLI.*
+ *This algorithm is executed after the identification of the microservice on which to apply the HPA autoscaler, it allows to find the number of replicas to be applied by carrying out load testing using a ramp signal iteratively, assessing whether the insertion of additional replica results in a performance improvement in terms of SLI.*
  
  - **`load_testing_custom_shape.py`**:  Allows load testing using a custom input signal shape;
 	  This shape must be obtained from monitoring the application, seeing how the production load behaves, request per seconds over time. The signal can be replaced by editing the *locust_file.py* file in the *loadgenerator_src/loadgenerator_v3* folder.   At the end of load testing, metrics are exported from Prometheus and the SLIs defined in the SLO document are displayed.
@@ -48,11 +48,15 @@ These dashboards can be used to monitor various metrics during load testing to i
 ## Data Analysis
 The folder *data-analysis* contains the files needed for analyze the results of the load tests.
 
- - **`find_rt_weight_of_ms.py`**: This script allows to find out the impact of a microservice on latency, i.e. the percentage weight on high-level latency.
+ - **`find_rt_weight_of_ms.py`**: This algorithm allows to find out the impact of a microservice on latency, i.e. the percentage weight on high-level latency.
 From the results of load testing scripts (*latency_by_app*), it analyses the latencies of flows between *pairs of microservices*.
 It obtains the weight each time stamp of the simulation and then relates it to the high-level latency value. As output, it provides a percentage value for each microservice
 
- - **`data_plot.py`**: Thanks to this scrypt, data obtained as results of load testing scrypts can be plotted.
+ - **`data_plot.py`**: Thanks to this scrypt, data obtained as results of load testing algoritms can be plotted and compared.
+		 - plot_all_latency
+		 - plot_by_destination
+		 - compare_latencies
+		 - compare_replicas
  
 ## Istio Service Mesh
 
