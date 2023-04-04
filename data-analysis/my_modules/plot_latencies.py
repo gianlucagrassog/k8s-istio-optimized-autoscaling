@@ -34,12 +34,12 @@ def plot_by_destination(latency_df,destination, ms_names):
     latency_dfs = {}
 
     for source in ms_names:
-        print(source+" to "+destination)
         ts = latency_df[(latency_df['source_app'] == source) & (
             latency_df['destination_app'] == destination)]
-        print(ts)
+        
         key = source + '_' + destination
         if not ts.empty:
+            print(ts.mean())
             latency_dfs[key] = ts
 
     for key in latency_dfs:
@@ -113,23 +113,28 @@ def compare_replicas(csv_1,sim_name1,csv_2,sim_name2):
     for legobj in leg.legendHandles:
         legobj.set_linewidth(2.0)
     plt.show()
-# def plot_cpu(cpu_df):
+def plot_cpu(csv_1,ms_names):
 
-#     cpu_dfs = {}
+    cpu_df=read_data(csv_1)
+    cpu_dfs = {}
 
-#     for i in range(len(ms_names)):
-    
-#         ms_name = ms_names[i]
-#         ts = cpu_df[cpu_df['pod'].str.contains(ms_name)]
-#         print(ts)
-#         if not ts.empty:
-#             cpu_dfs[key] = ts
+    for ms_name in ms_names:
+     
+        ts = cpu_df[cpu_df['pod'].str.contains(ms_name)]
+        if not ts.empty:
+            cpu_dfs[ms_name] = ts
+            print(f"{ms_name} min:{ts['value'].min()}")
+            print(f"{ms_name} max:{ts['value'].max()}")
+            print(f"{ms_name} avg:{ts['value'].mean()}")
 
-#     for key in cpu_dfs:
-#         df = cpu_dfs[key]
-#         plt.plot(df['timestamp'], df['value'], label=f'{key}')
+    for key in cpu_dfs:
+        df = cpu_dfs[key]
+        plt.plot(df['timestamp'], df['value'], label=f'{key}')
 
-#     plt.ylabel('CPU Percentage (%)')
-#     plt.xlabel('Users (num)')
-#     plt.legend()
-#     plt.show()
+    leg = plt.legend()
+    for legobj in leg.legendHandles:
+        legobj.set_linewidth(1.0)
+    plt.ylabel('CPU Percentage (%)')
+    plt.xlabel('Users (num)')
+    plt.legend()
+    plt.show()

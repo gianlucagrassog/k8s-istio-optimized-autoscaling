@@ -9,6 +9,7 @@
 import math
 import random
 from locust import HttpUser, LoadTestShape, TaskSet
+import numpy as np
 
 products = [
     '0PUK6V6EV0',
@@ -71,7 +72,7 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
-    wait_time = lambda instance: random.gauss(5, 1) 
+    wait_time = lambda instance: np.random.exponential(scale=6)  
 
 class DoublePeak(LoadTestShape):
  
