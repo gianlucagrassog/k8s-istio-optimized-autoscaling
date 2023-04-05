@@ -7,6 +7,7 @@
 
 import random
 from locust import HttpUser, LoadTestShape, TaskSet, between, constant
+import numpy as np
 
 products = [
     '0PUK6V6EV0',
@@ -35,13 +36,13 @@ def viewCart(l):
 
 def addToCart(l):
     product = random.choice(products)
-    l.client.get("/product/" + product)
+    # l.client.get("/product/" + product)
     l.client.post("/cart", {
         'product_id': product,
         'quantity': random.choice([1,2,3,4,5,10])})
 
 def checkout(l):
-    addToCart(l)
+    # addToCart(l)
     l.client.post("/cart/checkout", {
         'email': 'someone@example.com',
         'street_address': '1600 Amphitheatre Parkway',
@@ -63,13 +64,13 @@ class UserBehavior(TaskSet):
     tasks = {index: 1,
         setCurrency: 2,
         browseProduct: 10,
-        addToCart: 2,
+        addToCart: 3,
         viewCart: 3,
         checkout: 1}
 
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
-    wait_time = lambda instance: random.gauss(5, 1) 
+    wait_time = lambda instance: np.random.exponential(scale=5)   
     
 class CustomShape(LoadTestShape):
     stages = [

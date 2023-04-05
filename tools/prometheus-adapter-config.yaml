@@ -6,18 +6,6 @@ prometheus:
 rules:
   default: false
   custom:
-    - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_bucket.*",namespace!="",pod!="",reporter="destination"}'
-      resources:
-        overrides:
-          namespace: 
-             resource: namespace
-          pod: 
-             resource: pod
-      name:
-        matches: ^(.*)
-        as: "restime_99_percentile"
-      metricsQuery: 'histogram_quantile(0.99,rate(istio_request_duration_milliseconds_bucket{<<.LabelMatchers>>}[30s]))'
-      
     - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter="source"}'
       seriesFilters:
       - isNot: .*bucket
@@ -31,6 +19,16 @@ rules:
         matches: ^(.*)
         as: "http_requests_restime_2m"
       metricsQuery: 'sum(rate(istio_request_duration_milliseconds_sum{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>) / sum(rate(istio_request_duration_milliseconds_count{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>)'
-    
-  
+
+    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",namespace!="",pod!=""}'
+      resources:
+        overrides:
+          namespace: 
+              resource: namespace
+          pod: 
+              resource: pod
+      name:
+        matches: ^(.*)
+        as: "restime_99_percentile"
+      metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>}[30s]))
 
