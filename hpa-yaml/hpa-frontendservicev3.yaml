@@ -35,6 +35,8 @@ spec:
       target:
         type: AverageValue
         averageValue: 10000m # 100ms
+
+        
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
