@@ -30,5 +30,5 @@ rules:
       name:
         matches: ^(.*)
         as: "restime_99_percentile"
-      metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>}[30s]))
+      metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>}[30s]))'
 
