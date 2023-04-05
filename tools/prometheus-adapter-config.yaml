@@ -5,34 +5,20 @@ prometheus:
 
 rules:
   default: false
-  
-  - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter='destination',response_code="200", response_flags="-",source_app!="unknown"}'
-    seriesFilters:
-    - is: .*bucket
-    resources:
-      overrides:
-        namespace: 
-            resource: namespace
-        pod: 
-            resource: pod
-    name:
-      matches: ^(.*)
-      as: "restime_99_percentile"
-    metricsQuery: 'histogram_quantile(0.99,rate(istio_request_duration_milliseconds_bucket{<<.LabelMatchers>>}[30s]))'
+  custom:
+    - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter="source"}'
+      seriesFilters:
+      - isNot: .*bucket
+      resources:
+        overrides:
+          namespace: 
+             resource: namespace
+          pod: 
+             resource: pod
+      name:
+        matches: ^(.*)
+        as: "http_requests_restime_2m"
+      metricsQuery: 'sum(rate(istio_request_duration_milliseconds_sum{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>) / sum(rate(istio_request_duration_milliseconds_count{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>)'
     
-  - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter="source"}'
-    seriesFilters:
-    - isNot: .*bucket
-    resources:
-      overrides:
-        namespace: 
-            resource: namespace
-        pod: 
-            resource: pod
-    name:
-      matches: ^(.*)
-      as: "http_requests_restime_2m"
-    metricsQuery: 'sum(rate(istio_request_duration_milliseconds_sum{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>) / sum(rate(istio_request_duration_milliseconds_count{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>)'
   
-
 
