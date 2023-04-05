@@ -16,7 +16,7 @@ rules:
       name:
         matches: ^(.*)
         as: "restime_99_percentile"
-      metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>}[30s]))'
+      metricsQuery: 'histogram_quantile(0.99,rate(istio_request_duration_milliseconds_bucket{<<.LabelMatchers>>}[30s]))'
       
     - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter="source"}'
       seriesFilters:
