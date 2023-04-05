@@ -17,11 +17,11 @@ spec:
   - type: Pods
     pods:
       metric:
-        name: http_requests_restime_2m
+        name: restime_99_percentile
       target:
         type: AverageValue
-        averageValue: 15000m # 150ms
-
+        averageValue: 70000m # 700ms
+        
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment

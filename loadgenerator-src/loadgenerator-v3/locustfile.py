@@ -72,7 +72,7 @@ class UserBehavior(TaskSet):
 
 class WebsiteUser(HttpUser):
     tasks = [UserBehavior]
-    wait_time = lambda instance: np.random.exponential(scale=6)  
+    wait_time = lambda instance: np.random.exponential(scale=5)  
 
 class DoublePeak(LoadTestShape):
  
