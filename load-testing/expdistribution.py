@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 # Set the random seed for reproducibility
 np.random.seed(42)
 
-# Generate 1000 samples from an exponential distribution with lambda=0.2
+# Generate 10000 samples from an exponential distribution with lambda=0.2
 lam = 0.2
 data = np.random.exponential(scale=1/lam, size=10000)
 
 # Plot the PDF of the exponential distribution
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(8, 6))
 x = np.linspace(0, 40, 100)
 pdf = lam * np.exp(-lam * x)
 
@@ -23,7 +23,7 @@ plt.title('Exponential distribution PDF with $\lambda$ = {}'.format(lam))
 plt.show()
 
 # Plot the CDF of the exponential distribution
-plt.figure(figsize=(8, 5))
+plt.figure(figsize=(8, 6))
 cdf = 1 - np.exp(-lam * x)
 
 

@@ -38,13 +38,13 @@ def viewCart(l):
 
 def addToCart(l):
     product = random.choice(products)
-    l.client.get("/product/" + product)
+    #l.client.get("/product/" + product)
     l.client.post("/cart", {
         'product_id': product,
         'quantity': random.choice([1,2,3,4,5,10])})
 
 def checkout(l):
-    addToCart(l)
+    #addToCart(l)
     l.client.post("/cart/checkout", {
         'email': 'someone@example.com',
         'street_address': '1600 Amphitheatre Parkway',
