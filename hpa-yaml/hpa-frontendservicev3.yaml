@@ -17,26 +17,27 @@ spec:
   - type: Pods
     pods:
       metric:
+        name: restime_50_percentile
+      target:
+        type: AverageValue
+        averageValue: 100000m # 100ms
+  - type: Pods
+    pods:
+      metric:
         name: restime_99_percentile
       target:
         type: AverageValue
-        averageValue: 90000m # 900ms
+        averageValue: 900000m # 900ms
   - type: Pods
     pods:
       metric:
         name: restime_90_percentile
       target:
         type: AverageValue
-        averageValue: 45000m # 450ms
-  - type: Pods
-    pods:
-      metric:
-        name: restime_50_percentile
-      target:
-        type: AverageValue
-        averageValue: 10000m # 100ms
+        averageValue: 450000m # 450ms
+  
 
-        
+
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
