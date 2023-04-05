@@ -8,11 +8,11 @@ spec:
   maxReplicas: 5
   behavior:
     scaleDown:
-      stabilizationWindowSeconds: 100
-      policies:
-      - type: Pods
-        value: 1
-        periodSeconds: 300 # (i.e., scale down one pod every 5 min) 
+      stabilizationWindowSeconds: 60
+      # policies:
+      # - type: Pods
+      #   value: 1
+      #   periodSeconds: 300 # (i.e., scale down one pod every 5 min) 
   metrics:
   - type: Pods
     pods:
@@ -34,7 +34,7 @@ spec:
         name: restime_50_percentile
       target:
         type: AverageValue
-        averageValue: 8000m # 80ms
+        averageValue: 10000m # 100ms
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
