@@ -9,18 +9,7 @@ spec:
   behavior:
     scaleDown:
       stabilizationWindowSeconds: 60
-      # policies:
-      # - type: Pods
-      #   value: 1
-      #   periodSeconds: 300 # (i.e., scale down one pod every 5 min) 
   metrics:
-  - type: Pods
-    pods:
-      metric:
-        name: restime_50_percentile
-      target:
-        type: AverageValue
-        averageValue: 10000m # 100ms
   - type: Pods
     pods:
       metric:
