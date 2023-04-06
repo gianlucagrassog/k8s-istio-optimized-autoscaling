@@ -6,7 +6,7 @@ prometheus:
 rules:
   default: false
   custom: 
-    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",namespace!="",pod!=""}'
+    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend",namespace!="",pod!=""}'
       resources:
         overrides:
           namespace: 
@@ -18,7 +18,7 @@ rules:
         as: "restime_99_percentile"
       metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>}[2m]))'
 
-    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",namespace!="",pod!=""}'
+    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend",namespace!="",pod!=""}'
       resources:
         overrides:
           namespace: 
@@ -30,7 +30,7 @@ rules:
         as: "restime_90_percentile"
       metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>}[2m]))'
     
-    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",namespace!="",pod!=""}'
+    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination", response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend",namespace!="",pod!=""}'
       resources:
         overrides:
           namespace: 
