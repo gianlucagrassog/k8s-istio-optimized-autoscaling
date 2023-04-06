@@ -6,7 +6,7 @@ prometheus:
 rules:
   default: false
   custom: 
-    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend",namespace!="",pod!=""}'
+    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",namespace!="",pod!=""}'
       resources:
         overrides:
           namespace: 
@@ -16,9 +16,9 @@ rules:
       name:
         matches: ^(.*)
         as: "restime_99_percentile"
-      metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>}[2m]))'
+      metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>,,response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend"}[2m]))'
 
-    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend",namespace!="",pod!=""}'
+    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",namespace!="",pod!=""}'
       resources:
         overrides:
           namespace: 
@@ -28,9 +28,9 @@ rules:
       name:
         matches: ^(.*)
         as: "restime_90_percentile"
-      metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>}[2m]))'
+      metricsQuery: 'histogram_quantile(0.99,rate(<<.Series>>{<<.LabelMatchers>>,response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend"}[2m]))'
     
-    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination", response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend",namespace!="",pod!=""}'
+    - seriesQuery: 'istio_request_duration_milliseconds_bucket{reporter="destination",namespace!="",pod!=""}'
       resources:
         overrides:
           namespace: 
@@ -40,7 +40,7 @@ rules:
       name:
         matches: ^(.*)
         as: "restime_50_percentile"
-      metricsQuery: 'histogram_quantile(0.50,rate(<<.Series>>{<<.LabelMatchers>>}[2m]))'
+      metricsQuery: 'histogram_quantile(0.50,rate(<<.Series>>{<<.LabelMatchers>>,response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend"}[2m]))'
 
     - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter="source"}'
       seriesFilters:
