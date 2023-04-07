@@ -10,6 +10,7 @@ spec:
     scaleDown:
       stabilizationWindowSeconds: 60
   metrics:
+
   - type: Pods
     pods:
       metric:
@@ -17,6 +18,7 @@ spec:
       target:
         type: AverageValue
         averageValue: 850000m # 850ms
+
   - type: Pods
     pods:
       metric:
@@ -24,7 +26,8 @@ spec:
       target:
         type: AverageValue
         averageValue: 450000m # 450ms
-   - type: Pods
+
+  - type: Pods
     pods:
       metric:
         name: restime_50_percentile
