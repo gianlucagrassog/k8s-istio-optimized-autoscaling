@@ -65,9 +65,9 @@ if __name__ == '__main__':
     histo90="histogram_quantile(0.90,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[30s]))"
     histo99="histogram_quantile(0.99,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[30s]))"
     
-    collect_save_metric(histo50, start_time1, end_time1, f'{name}.histogram_quantile_0.50_{datetime.now()}',prometheus)
-    collect_save_metric(histo90, start_time1, end_time1, f'{name}.histogram_quantile_0.90_{datetime.now()}',prometheus)
-    collect_save_metric(histo99, start_time1, end_time1, f'{name}.histogram_quantile_0.99_{datetime.now()}',prometheus)
+    collect_save_metric(histo50, start_time1, end_time1, f'{name}_histogram_quantile_0_50_1',prometheus)
+    collect_save_metric(histo90, start_time1, end_time1, f'{name}_histogram_quantile_0_90_1',prometheus)
+    collect_save_metric(histo99, start_time1, end_time1, f'{name}_histogram_quantile_0_99_1',prometheus)
 
 
     
