@@ -96,9 +96,9 @@ class DoublePeak(LoadTestShape):
             if run_time < self.time_limit:
                 user_count = (
                     (self.peak_one_users - self.min_users)
-                    * math.e ** -(((run_time / (self.time_limit / 10 * 2 / 3)) - 5) ** 2)
+                    * math.e ** -((((run_time+390) / (self.time_limit / 10 * 3.8 / 3)) - 5) ** 2)
                     + (self.peak_two_users - self.min_users)
-                    * math.e ** -(((run_time / (self.time_limit / 10 * 2 / 3)) - 10) ** 2)
+                    * math.e ** -((((run_time+390) / (self.time_limit / 10 * 3.8 / 3)) - 7.3) ** 2)
                     + self.min_users
                 )
                 return (round(user_count), round(user_count))

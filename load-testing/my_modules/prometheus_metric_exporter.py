@@ -54,16 +54,20 @@ if __name__ == '__main__':
     start_time = parse_datetime("2023-03-24 11:56:54")
     end_time = parse_datetime("2023-03-24 12:16:59")
 
-    start_time1 = parse_datetime("2023-04-01 14:05:43")
-    end_time1 = parse_datetime("2023-04-01 14:25:48")
+    start_time1 = parse_datetime("2023-03-24 11:56:56")
+    end_time1 = parse_datetime("2023-03-24 12:17:22")
 
     name="post_export_1"
-    collect_save_metric(REPLICAS_AVAILABLE, start_time, end_time, f'{name}.1_replicas_available_custom_shape_{datetime.now()}',prometheus)
-    collect_save_metric(REPLICAS_AVAILABLE, start_time1, end_time1, f'{name}.2_replicas_available_custom_shape_{datetime.now()}',prometheus)
+    # collect_save_metric(REPLICAS_AVAILABLE, start_time, end_time, f'{name}.1_replicas_available_custom_shape_{datetime.now()}',prometheus)
+    # collect_save_metric(REPLICAS_AVAILABLE, start_time1, end_time1, f'{name}.2_replicas_available_custom_shape_{datetime.now()}',prometheus)
+
+    histo50="histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[30s]))"
+    histo90="histogram_quantile(0.90,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[30s]))"
+    histo99="histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[30s]))"
+    
+    collect_save_metric(histo50, start_time1, end_time1, f'{name}.histogram_quantile_0.50_{datetime.now()}',prometheus)
+    collect_save_metric(histo90, start_time1, end_time1, f'{name}.histogram_quantile_0.90_{datetime.now()}',prometheus)
+    collect_save_metric(histo99, start_time1, end_time1, f'{name}.histogram_quantile_0.99_{datetime.now()}',prometheus)
 
 
-    histo50="histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[10m]))"
-    histo90="histogram_quantile(0.90,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[10m]))"
-    histo95="histogram_quantile(0.95,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[10m]))"
-    histo99="histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[10m]))"
     
