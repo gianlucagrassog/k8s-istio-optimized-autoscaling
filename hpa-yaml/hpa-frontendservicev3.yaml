@@ -21,7 +21,7 @@ spec:
         name: restime_99_percentile
       target:
         type: AverageValue
-        averageValue: 850000m # 850ms
+        averageValue: 450000m # 850ms
 
   - type: Pods
     pods:
@@ -29,7 +29,7 @@ spec:
         name: restime_90_percentile
       target:
         type: AverageValue
-        averageValue: 450000m # 450ms
+        averageValue: 200000m # 450ms
 
   - type: Pods
     pods:
