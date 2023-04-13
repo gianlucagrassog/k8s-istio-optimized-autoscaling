@@ -22,6 +22,11 @@ plt.title('Exponential distribution PDF with $\lambda$ = {}'.format(lam))
 # Show the plot PDF
 plt.show()
 
+plt.ylabel('Value (s)')
+plt.plot(list(range(10000)),data)
+plt.show()
+
+
 # Plot the CDF of the exponential distribution
 plt.figure(figsize=(8, 6))
 cdf = 1 - np.exp(-lam * x)
