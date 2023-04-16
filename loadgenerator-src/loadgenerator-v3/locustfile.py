@@ -82,7 +82,12 @@ class DoublePeak(LoadTestShape):
     min_users = 200 # minimum users
     peak_one_users = 600 # users in first peak
     peak_two_users = 550 # users in second peak
-    time_limit = 1200 # total length of test
+    # time_limit = 1200 # total length of test
+    time_limit = 1500 # total length of test
+
+    # Normal distribution
+    std = 1
+
 
     def tick(self):
         run_time = round(self.get_run_time())
@@ -91,17 +96,26 @@ class DoublePeak(LoadTestShape):
             tick_data = (self.stage["users"], self.stage["spawn_rate"])
             return tick_data
         
-        # Start Double Peak Testing
+        # Start Bell Curve Testing
         else:
             if run_time < self.time_limit:
                 user_count = (
-                    (self.peak_one_users - self.min_users)
-                    * math.e ** -((((run_time + 130 )/ (self.time_limit / 10 * 3.2 / 3)) - 5) ** 2)
-                    + (self.peak_two_users - self.min_users)
-                    * math.e ** -((((run_time + 130)/ (self.time_limit / 10 * 3.2 / 3)) - 10) ** 2)
-                    + self.min_users
+                    (self.min_users)
+                    + (1/(math.sqrt(2*math.pi)*self.std))
+                    * math.e ** ((-1/2)
+                                 *(((run_time-800)/150)
+                                   /
+                                   (self.std))**2)
+                    * 1000
                 )
+                # user_count = (
+                #     (self.peak_one_users - self.min_users)
+                #     * math.e ** -((((run_time + 130 )/ (self.time_limit / 10 * 3.2 / 3)) - 5) ** 2)
+                #     + (self.peak_two_users - self.min_users)
+                #     * math.e ** -((((run_time + 130)/ (self.time_limit / 10 * 3.2 / 3)) - 10) ** 2)
+                #     + self.min_users
+                # )
                 return (round(user_count), round(user_count))
             else:
                 return None
-
+#
