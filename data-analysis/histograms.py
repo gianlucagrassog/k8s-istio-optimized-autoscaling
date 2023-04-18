@@ -25,7 +25,7 @@ def plot_histogram(*histogram_data, names):
     # Display the plot
     plt.show()
 
-def main( ms_names):
+def main():
     histogram_data_99 = read_data('./csv_results/histogram_quantile_99.csv')
     histogram_data_90 = read_data('./csv_results/histogram_quantile_90.csv')
     histogram_data_50 = read_data('./csv_results/histogram_quantile_50.csv')
@@ -34,7 +34,4 @@ def main( ms_names):
     
 
 if __name__ == '__main__':
-    ms_names = ["frontend", "adservice", "cartservice", "checkoutservice", "currencyservice", "emailservice",
-                "paymentservice", "loadgenerator", "productcatalogservice", "recommendationservice", "shippingservice", "redis-cart"]
-
-    main(ms_names)
+    main()
