@@ -61,30 +61,7 @@ It obtains the weight each time stamp of the simulation and then relates it to t
 ## Istio Service Mesh
 
 ## Custom Metrics Autoscaler
-```
-prometheus:
-  url: http://prometheus.istio-system.svc
-  port: 9090
-  path: ""
 
-rules:
-  default: false
-  custom:
-    - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter="source"}'
-      seriesFilters:
-      - isNot: .*bucket
-      resources:
-        overrides:
-          namespace: 
-             resource: namespace
-          pod: 
-             resource: pod
-      name:
-        matches: ^(.*)
-        as: "http_requests_restime_2m"
-      metricsQuery: 'sum(rate(istio_request_duration_milliseconds_sum{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>) / sum(rate(istio_request_duration_milliseconds_count{<<.LabelMatchers>>}[1m]) > 0) by (<<.GroupBy>>)'
-
-```
 ## Tools
 
 ### Prometheus and Grafana 
