@@ -14,8 +14,8 @@ This Repo provides an in-depth analysis of the challenges involved in optimizing
 - **Load Testing** 
  
 	 The folder *loadtesting* contains the files needed for load testing an microservice application with different signals.
-	--	**`load_testing_custom_shape.py`**:  Allows load testing using a custom input signal shape;
-	--	 **`load_testing_ramp.py`**:  Allows load testing using a RAMP signal shape;
+	*	**`load_testing_custom_shape.py`**:  Allows load testing using a custom input signal shape;
+	*	 **`load_testing_ramp.py`**:  Allows load testing using a RAMP signal shape;
 	
 ## Load Testing
 The folder *loadtesting* contains the files needed for load testing of the application.
