@@ -26,11 +26,12 @@ def plot_histogram(*histogram_data, names):
     plt.show()
 
 def main():
+
+    # Configuration 1 
     histogram_data_99 = read_data('./csv_results/histogram_quantile_99.csv')
     histogram_data_90 = read_data('./csv_results/histogram_quantile_90.csv')
     histogram_data_50 = read_data('./csv_results/histogram_quantile_50.csv')
     plot_histogram(histogram_data_99,histogram_data_90,histogram_data_50,names=["99th","90th","50th"])
-    
     
 
 if __name__ == '__main__':
