@@ -8,11 +8,11 @@ PERCENTILE_90TH_10M="histogram_quantile(0.90,rate(istio_request_duration_millise
 PERCENTILE_50TH_10M="histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[10m]))"
 AVAILABILITY_10M="sum(rate(istio_requests_total{reporter=\"source\", response_code!~\"5.*\"}[10m]))/sum(rate(istio_requests_total{reporter=\"source\"}[10m]))"
 
-# SLIs 20M
-PERCENTILE_99TH_20M="histogram_quantile(0.99,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[20m]))"
-PERCENTILE_90TH_20M="histogram_quantile(0.90,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[20m]))"
-PERCENTILE_50TH_20M="histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[20m]))"
-AVAILABILITY_20M="sum(rate(istio_requests_total{reporter=\"source\", response_code!~\"5.*\"}[20m]))/sum(rate(istio_requests_total{reporter=\"source\"}[20m]))"
+# SLIs 25M
+PERCENTILE_99TH_25M="histogram_quantile(0.99,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[25m]))"
+PERCENTILE_90TH_25M="histogram_quantile(0.90,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[25m]))"
+PERCENTILE_50TH_25M="histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[25m]))"
+AVAILABILITY_25M="sum(rate(istio_requests_total{reporter=\"source\", response_code!~\"5.*\"}[25m]))/sum(rate(istio_requests_total{reporter=\"source\"}[25m]))"
 
 # LATENCY of microservices
 LATENCY_LG_FE="sum(rate(istio_request_duration_milliseconds_sum{reporter='source',source_app='loadgenerator',destination_app='frontend'}[1m])) by (source_app, destination_app) / sum(rate(istio_request_duration_milliseconds_count{reporter='source', source_app='loadgenerator',destination_app='frontend'}[1m])) by (source_app, destination_app)"
