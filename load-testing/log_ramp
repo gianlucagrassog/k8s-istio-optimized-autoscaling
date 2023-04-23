@@ -37,3 +37,16 @@
 2023-04-01 14:42:42,452 - INFO - Collect Metric and Save Result
 2023-04-01 14:42:42,738 - INFO - Collect Metric and Save Result
 2023-04-01 14:42:43,086 - INFO - Load test finished
+2023-04-23 14:47:40,956 - INFO - Starting load test with RAMP signal for 10 Minutes
+2023-04-23 14:47:55,969 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 14:58:01,321 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 14:58:06,756 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 3804.175049984588 ms
+ - 90th Percentile: 2202.254366530585 ms
+ - 50th Percentile: 816.7849667393332 ms
+ - Availability:1.0
+2023-04-23 14:58:06,757 - INFO - Checking for 5xx errors with threshold 3
+2023-04-23 14:58:06,761 - INFO - Retrieve and save a metrics values 
+2023-04-23 14:58:06,761 - INFO - Collect Metric and Save Result
+2023-04-23 14:58:06,805 - INFO - Collect Metric and Save Result
+2023-04-23 14:58:07,235 - INFO - Load test finished
