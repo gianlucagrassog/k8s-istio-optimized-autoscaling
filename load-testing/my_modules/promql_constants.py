@@ -14,6 +14,13 @@ PERCENTILE_90TH_25M="histogram_quantile(0.90,rate(istio_request_duration_millise
 PERCENTILE_50TH_25M="histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[25m]))"
 AVAILABILITY_25M="sum(rate(istio_requests_total{reporter=\"source\", response_code!~\"5.*\"}[25m]))/sum(rate(istio_requests_total{reporter=\"source\"}[25m]))"
 
+
+# Histograms
+HISTO_50="histogram_quantile(0.50,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[30s]))"
+HISTO_90="histogram_quantile(0.90,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[30s]))"
+HISTO_99="histogram_quantile(0.99,rate(istio_request_duration_milliseconds_bucket{reporter='source',response_code=\"200\", response_flags=\"-\", source_app=\"loadgenerator\",destination_app=\"frontend\"}[30s]))"
+    
+
 # LATENCY of microservices
 LATENCY_LG_FE="sum(rate(istio_request_duration_milliseconds_sum{reporter='source',source_app='loadgenerator',destination_app='frontend'}[1m])) by (source_app, destination_app) / sum(rate(istio_request_duration_milliseconds_count{reporter='source', source_app='loadgenerator',destination_app='frontend'}[1m])) by (source_app, destination_app)"
 LATENCY_BY_APP_30S="sum(rate(istio_request_duration_milliseconds_sum{reporter='source'}[30s])) by (source_app, destination_app) / sum(rate(istio_request_duration_milliseconds_count{reporter='source', destination_app!='unknown'}[30s])) by (source_app, destination_app)"

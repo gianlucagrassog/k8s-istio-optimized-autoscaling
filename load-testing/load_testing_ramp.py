@@ -46,7 +46,7 @@ def check_save_sli(start_time):
     
    
     # Save metrics (Percentiles and Availability) to CSV file 
-    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    timestamp = datetime.now().strftime("%d%m%Y_%H%M%S")
     dir_path = "results"
     if not os.path.exists(dir_path):
         os.makedirs(dir_path)
@@ -102,11 +102,11 @@ def main():
     # Retrieve and Save metrics
     logging.info('Retrieve and save a metrics values ')
     timestamp = datetime.now()
-    collect_save_metric(LATENCY_BY_APP_30S, start_time, timestamp,f'latency_by_app_ramp_{timestamp.strftime("%Y%m%d%H%M%S")}', prometheus)
-    collect_save_metric(CPU_PERCENTANCE_BY_POD, start_time, timestamp,f'cpu_percentance_by_pod_ramp_{timestamp.strftime("%Y%m%d%H%M%S")}', prometheus)
-    # collect_save_metric(MEMORY_USAGE_BY_POD, start_time, timestamp,f'memory_usage_by_pod_ramp_{timestamp.strftime("%Y%m%d%H%M%S")}', prometheus)
-    # collect_save_metric(REPLICAS_AVAILABLE, start_time, timestamp,f'replicas_available_ramp_{timestamp.strftime("%Y%m%d%H%M%S")}', prometheus)
-    # collect_save_metric(NODE_CPU_PERCENTANCE, start_time, timestamp,f'node_cpu_percentance_ramp_{timestamp.strftime("%Y%m%d%H%M%S")}', prometheus)
+    collect_save_metric(LATENCY_BY_APP_30S, start_time, timestamp,f'latency_by_app_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
+    collect_save_metric(CPU_PERCENTANCE_BY_POD, start_time, timestamp,f'cpu_percentance_by_pod_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
+    # collect_save_metric(MEMORY_USAGE_BY_POD, start_time, timestamp,f'memory_usage_by_pod_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
+    # collect_save_metric(REPLICAS_AVAILABLE, start_time, timestamp,f'replicas_available_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
+    # collect_save_metric(NODE_CPU_PERCENTANCE, start_time, timestamp,f'node_cpu_percentance_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
     logging.info('Load test finished')
 
 if __name__ == '__main__':
