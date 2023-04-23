@@ -118,3 +118,116 @@
 2023-04-02 13:17:31,315 - INFO - Scale Deploy currencyservice with 4 replicas
 2023-04-02 13:17:51,504 - INFO - Starting apply loadgenerator.yaml YAML
 2023-04-02 13:27:57,068 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 15:15:26,543 - INFO - Starting load tests
+2023-04-23 15:15:26,543 - INFO - Starting load test with 1 replica on frontend
+2023-04-23 15:15:41,557 - INFO - Scale Deploy frontend with 1 replicas
+2023-04-23 15:16:01,681 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 15:26:07,101 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 15:26:12,483 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 3895.194394901936 ms
+ - 90th Percentile: 2228.0075294438025 ms
+ - 50th Percentile: 880.1451063369934 ms
+ - Availability:1.0
+2023-04-23 15:26:12,484 - INFO - Starting load test with 2 replica on frontend
+2023-04-23 15:26:27,497 - INFO - Scale Deploy frontend with 2 replicas
+2023-04-23 15:26:47,591 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 16:09:37,020 - INFO - Starting load tests
+2023-04-23 16:09:37,021 - INFO - Starting load test with 1 replica on frontend
+2023-04-23 16:09:52,036 - INFO - Scale Deploy frontend with 1 replicas
+2023-04-23 16:10:12,270 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 16:20:17,685 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 16:20:23,104 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 3767.541434878346 ms
+ - 90th Percentile: 2222.7472415223383 ms
+ - 50th Percentile: 888.2483237086014 ms
+ - Availability:1.0
+2023-04-23 16:20:23,104 - INFO - Starting load test with 2 replica on frontend
+2023-04-23 16:20:38,117 - INFO - Scale Deploy frontend with 2 replicas
+2023-04-23 16:20:58,305 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 16:45:02,574 - INFO - Starting load tests
+2023-04-23 16:45:02,575 - INFO - Starting load test with 1 replica on frontend
+2023-04-23 16:45:17,589 - INFO - Scale Deploy frontend with 1 replicas
+2023-04-23 16:45:37,725 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 16:54:58,946 - INFO - Starting load tests
+2023-04-23 16:54:58,946 - INFO - Starting load test with 1 replica on frontend
+2023-04-23 16:55:13,961 - INFO - Scale Deploy frontend with 1 replicas
+2023-04-23 16:55:34,054 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 17:05:39,465 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 17:05:44,881 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 4077.9968246977355 ms
+ - 90th Percentile: 2246.86875907897 ms
+ - 50th Percentile: 892.1295614313722 ms
+ - Availability:1.0
+2023-04-23 17:05:44,881 - INFO - Starting load test with 2 replica on frontend
+2023-04-23 17:05:59,894 - INFO - Scale Deploy frontend with 2 replicas
+2023-04-23 17:06:20,007 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 17:16:25,361 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 17:16:30,846 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 984.4037220362304 ms
+ - 90th Percentile: 586.9264419191911 ms
+ - 50th Percentile: 171.05909706196417 ms
+ - Availability:1.0
+2023-04-23 17:16:30,847 - INFO - There were improvements in SLIs!
+2023-04-23 17:16:30,847 - INFO - - p99: -75.86060597020708%
+2023-04-23 17:16:30,847 - INFO - - p90: -73.87802738599729%
+2023-04-23 17:16:30,847 - INFO - - p50: -80.82575620658625%
+2023-04-23 17:16:30,847 - INFO - - availability: -80.82575620658625%
+2023-04-23 17:16:30,847 - INFO - Starting load test with 3 replica on frontend
+2023-04-23 17:16:45,861 - INFO - Scale Deploy frontend with 3 replicas
+2023-04-23 17:17:05,978 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 17:27:11,329 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 17:27:16,758 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 981.107512635477 ms
+ - 90th Percentile: 484.33323517727234 ms
+ - 50th Percentile: 111.78841361556316 ms
+ - Availability:1.0
+2023-04-23 17:27:16,758 - INFO - There were improvements in SLIs!
+2023-04-23 17:27:16,758 - INFO - - p99: -0.3348432484525037%
+2023-04-23 17:27:16,758 - INFO - - p90: -17.4797384160184%
+2023-04-23 17:27:16,758 - INFO - - p50: -34.6492437200992%
+2023-04-23 17:27:16,758 - INFO - - availability: -34.6492437200992%
+2023-04-23 17:27:16,758 - INFO - Starting load test with 4 replica on frontend
+2023-04-23 17:27:31,769 - INFO - Scale Deploy frontend with 4 replicas
+2023-04-23 17:27:51,958 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 17:37:57,521 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 17:38:03,007 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 985.4364376073752 ms
+ - 90th Percentile: 473.21951422749976 ms
+ - 50th Percentile: 116.26351060728335 ms
+ - Availability:1.0
+2023-04-23 17:38:03,007 - INFO - There were improvements in SLIs!
+2023-04-23 17:38:03,007 - INFO - - p99: 0.4412283991455492%
+2023-04-23 17:38:03,007 - INFO - - p90: -2.294643469119937%
+2023-04-23 17:38:03,007 - INFO - - p50: 4.003184987587274%
+2023-04-23 17:38:03,007 - INFO - - availability: 4.003184987587274%
+2023-04-23 17:38:03,007 - INFO - Starting load test with 5 replica on frontend
+2023-04-23 17:38:18,021 - INFO - Scale Deploy frontend with 5 replicas
+2023-04-23 17:38:38,201 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 17:48:43,633 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 17:48:49,100 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 994.0261553634564 ms
+ - 90th Percentile: 501.30449841984125 ms
+ - 50th Percentile: 129.9009646890288 ms
+ - Availability:1.0
+2023-04-23 17:48:49,101 - INFO - There were no improvements in SLIs.
+2023-04-23 17:48:49,101 - INFO - - p99: 0.8716663427766995%
+2023-04-23 17:48:49,101 - INFO - - p90: 5.934874481706109%
+2023-04-23 17:48:49,101 - INFO - - p50: 11.72978005782936%
+2023-04-23 17:48:49,101 - INFO - - availability: 11.72978005782936%
+2023-04-23 17:48:49,101 - INFO - Starting load test with 6 replica on frontend
+2023-04-23 17:49:04,106 - INFO - Scale Deploy frontend with 6 replicas
+2023-04-23 17:49:24,287 - INFO - Starting apply loadgenerator.yaml YAML
+2023-04-23 17:59:30,093 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-04-23 17:59:35,555 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 979.0817113941894 ms
+ - 90th Percentile: 483.0413934105676 ms
+ - 50th Percentile: 121.76207724576953 ms
+ - Availability:1.0
+2023-04-23 17:59:35,555 - INFO - There were improvements in SLIs!
+2023-04-23 17:59:35,556 - INFO - - p99: -1.5034256280512777%
+2023-04-23 17:59:35,556 - INFO - - p90: -3.643116123402179%
+2023-04-23 17:59:35,556 - INFO - - p50: -6.265455736023999%
+2023-04-23 17:59:35,556 - INFO - - availability: -6.265455736023999%
+2023-04-23 17:59:35,556 - INFO - Starting load test with 7 replica on frontend
+2023-04-23 17:59:50,569 - INFO - Scale Deploy frontend with 7 replicas
+2023-04-23 18:00:10,686 - INFO - Starting apply loadgenerator.yaml YAML
