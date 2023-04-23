@@ -113,6 +113,6 @@ def main(deploy):
 
 
 if __name__ == '__main__':
-    # main("frontend")
-    main("currencyservice")
+    main("frontend")
+    # main("currencyservice")
     # main("recommendationservice")

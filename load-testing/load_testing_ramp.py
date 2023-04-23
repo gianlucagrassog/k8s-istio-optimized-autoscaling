@@ -107,6 +107,9 @@ def main():
     # collect_save_metric(MEMORY_USAGE_BY_POD, start_time, timestamp,f'memory_usage_by_pod_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
     # collect_save_metric(REPLICAS_AVAILABLE, start_time, timestamp,f'replicas_available_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
     # collect_save_metric(NODE_CPU_PERCENTANCE, start_time, timestamp,f'node_cpu_percentance_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
+    # collect_save_metric(HISTO_50, start_time, timestamp, f'histogram_quantile_0_50_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}',prometheus)
+    # collect_save_metric(HISTO_90, start_time, timestamp, f'histogram_quantile_0_90_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}',prometheus)
+    # collect_save_metric(HISTO_99, start_time, timestamp, f'histogram_quantile_0_99_ramp_{timestamp.strftime("%d%m%Y_%H%M%S")}',prometheus)
     logging.info('Load test finished')
 
 if __name__ == '__main__':
