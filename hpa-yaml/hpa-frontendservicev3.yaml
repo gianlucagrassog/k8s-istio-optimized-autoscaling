@@ -8,7 +8,6 @@ spec:
   maxReplicas: 5
   behavior:
     scaleDown:
-      stabilizationWindowSeconds: 60
       policies:
       - type: Pods
         value: 1
