@@ -50,3 +50,5 @@
 2023-04-23 14:58:06,761 - INFO - Collect Metric and Save Result
 2023-04-23 14:58:06,805 - INFO - Collect Metric and Save Result
 2023-04-23 14:58:07,235 - INFO - Load test finished
+2023-04-23 20:49:08,641 - INFO - Starting load test with RAMP signal for 10 Minutes
+2023-04-23 20:49:23,656 - INFO - Starting apply loadgenerator.yaml YAML
