@@ -15,8 +15,9 @@ logging.basicConfig(level=logging.INFO)
 
 def main( ms_names):
     # Read data from csv
-    latency_df = read_data('./csv_results/latency_by_app_ramp_20230324114317.csv')
-    # plot_cpu('./csv_results/cpu_percentance_by_pod_custom_shape_20230324121659.csv', ms_names)
+    # latency_df = read_data('./csv_results/config1/latency_by_app_custom_shape_23042023_144349.csv')
+    latency_df = read_data('./csv_results/config1/latency_by_app_ramp_23042023_145806.csv')
+    plot_cpu('./csv_results/config1/cpu_percentance_by_pod_custom_shape_23042023_144349.csv', ms_names)
     #  Plot all MS Latency
     # plot_all_latency(latency_df, ms_names)
     plot_by_destination(latency_df,"frontend",ms_names)
@@ -34,6 +35,6 @@ def main( ms_names):
 
 if __name__ == '__main__':
     ms_names = ["frontend", "adservice", "cartservice", "checkoutservice", "currencyservice", "emailservice",
-                "paymentservice", "loadgenerator", "productcatalogservice", "recommendationservice", "shippingservice", "redis-cart"]
+                "paymentservice", "productcatalogservice", "recommendationservice", "shippingservice"]
 
     main(ms_names)

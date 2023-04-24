@@ -64,6 +64,7 @@ def plot_cpu(intersection_time, cpu_df):
         if len(ts) > 1:
             ts = ts.nlargest(1, 'value') 
         cpu_ts[pod] = ts
+        cpu_ts[pod]['value'].values[0]=(cpu_ts[pod]['value'].values[0]/200)
     
     cpu_ts['recommendationservice']['value'].values[0]=cpu_ts['recommendationservice']['value'].values[0]*2
     cpu_ts['checkoutservice']['value'].values[0]=cpu_ts['checkoutservice']['value'].values[0]*4

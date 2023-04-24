@@ -123,6 +123,7 @@ def plot_cpu(csv_1,ms_names):
         ts = cpu_df[cpu_df['pod'].str.contains(ms_name)]
         if not ts.empty:
             cpu_dfs[ms_name] = ts
+            cpu_dfs[ms_name]['value']=(cpu_dfs[ms_name]['value']/200)
             print(f"{ms_name} min:{ts['value'].min()}")
             print(f"{ms_name} max:{ts['value'].max()}")
             print(f"{ms_name} avg:{ts['value'].mean()}")
@@ -134,7 +135,7 @@ def plot_cpu(csv_1,ms_names):
     leg = plt.legend()
     for legobj in leg.legendHandles:
         legobj.set_linewidth(1.0)
-    plt.ylabel('CPU Percentage (%)')
-    plt.xlabel('Users (num)')
+    plt.ylabel('CPU Cores')
+    plt.xlabel('Time(s)')
     plt.legend()
     plt.show()

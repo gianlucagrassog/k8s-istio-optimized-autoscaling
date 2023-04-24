@@ -115,8 +115,9 @@ def main(latency_by_app_csv, ms_names):
 if __name__ == '__main__':
     ms_names = ["frontend", "adservice", "cartservice", "checkoutservice", "currencyservice", "emailservice",
                 "paymentservice", "loadgenerator", "productcatalogservice", "recommendationservice", "shippingservice", "redis-cart"]
-
-    main('./csv_results/latency_by_app_custom_shape_20230324121659.csv', ms_names)
+    
+    # Config 1
+    main('./csv_results/config1/latency_by_app_custom_shape_23042023_144349.csv', ms_names)
     # main('./csv_results/latency_by_app_ramp_20ghfc230324114317.csv', ms_names)
 
     # # Config 2: HPA on Frontend
