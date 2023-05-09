@@ -79,9 +79,9 @@ class DoublePeak(LoadTestShape):
     # first stage
     stage = {"duration": 100, "users": 2000, "spawn_rate": 20}
 
-    min_users = 2000 # minimum users
-    peak_one_users = 6000 # users in first peak
-    peak_two_users = 5500 # users in second peak
+    min_users = 200 # minimum users
+    peak_one_users = 600 # users in first peak
+    peak_two_users = 550 # users in second peak
     # time_limit = 1200 # total length of test
     time_limit = 1500 # total length of test
 
@@ -103,10 +103,10 @@ class DoublePeak(LoadTestShape):
                     (self.min_users)
                     + (1/(math.sqrt(2*math.pi)*self.std))
                     * math.e ** ((-1/2)
-                                 *(((run_time-8000)/1000)
+                                 *(((run_time-800)/150)
                                    /
                                    (self.std))**2)
-                    * 10000
+                    * 1000
                 )
                 # user_count = (
                 #     (self.peak_one_users - self.min_users)
