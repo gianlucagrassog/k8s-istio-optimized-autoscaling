@@ -99,3 +99,33 @@
 2023-04-24 11:36:22,272 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
 2023-04-24 12:19:06,880 - INFO - Starting load test with custom shape signal for 25 Minutes
 2023-04-24 12:19:21,895 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-09 19:10:09,742 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-09 19:10:24,757 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-09 19:14:56,838 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-09 19:15:11,842 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-09 19:38:46,961 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-09 19:39:01,974 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-09 19:40:34,330 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-09 19:40:49,343 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-09 19:49:07,905 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-09 19:49:22,922 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-09 19:50:45,991 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-09 19:51:01,002 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-09 19:58:20,679 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-09 19:58:35,693 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-09 20:11:40,435 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-09 20:11:55,449 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-09 20:37:00,822 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-09 20:37:06,397 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 960.4079959957492 ms
+ - 90th Percentile: 457.4033433754844 ms
+ - 50th Percentile: 75.58728458203156 ms
+ - Availability:1.0
+2023-05-09 20:37:06,398 - INFO - Checking for 5xx errors with threshold 3
+2023-05-09 20:37:06,403 - INFO - Retrieve and save a metrics values 
+2023-05-09 20:37:06,403 - INFO - Collect Metric and Save Result
+2023-05-09 20:37:08,144 - INFO - Collect Metric and Save Result
+2023-05-09 20:37:11,482 - INFO - Collect Metric and Save Result
+2023-05-09 20:37:11,520 - INFO - Collect Metric and Save Result
+2023-05-09 20:37:11,689 - INFO - Collect Metric and Save Result
+2023-05-09 20:37:11,772 - INFO - Load test finished
