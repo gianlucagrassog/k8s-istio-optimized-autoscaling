@@ -77,7 +77,7 @@ class WebsiteUser(HttpUser):
 class DoublePeak(LoadTestShape):
  
     # first stage
-    stage = {"duration": 100, "users": 2000, "spawn_rate": 20}
+    stage = {"duration": 100, "users": 200, "spawn_rate": 2}
 
     min_users = 200 # minimum users
     peak_one_users = 600 # users in first peak
