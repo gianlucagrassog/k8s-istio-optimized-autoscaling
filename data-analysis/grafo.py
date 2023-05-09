@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
 from datetime import datetime
-
+import networkx as nx
+import matplotlib.pyplot as plt
 from my_modules.data_csv import *
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -18,7 +19,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=lo
 
 def find_weight_ms(latency_df, ms_names):
     # Dictionary for all latencies df
-    latencies_of_mscouple = {}
+    latency_dfs = {}
 
     # Iterate all couple of ms
     for source in ms_names:
@@ -28,57 +29,81 @@ def find_weight_ms(latency_df, ms_names):
             key = source + '_' + destination
 
             if not ts.empty:
-                latencies_of_mscouple[key] = ts
+                latency_dfs[key] = ts
     print(latency_df)
     print(type(latency_df))
-    print(type(latencies_of_mscouple))
-    print(type(latencies_of_mscouple['loadgenerator_frontend']))
+    print(type(latency_dfs))
+    print(type(latency_dfs['loadgenerator_frontend']))
 
-    # Calculate all latency contributions in milliseconds for every microservice
-    # lc_of_ms(t) = RT inbound flows[t] - RT outflows[t] for every timestamp
-    lc_of_ms = {ms_name: {} for ms_name in ms_names}
+    # Creazione del grafo vuoto
+    G = nx.DiGraph()
+
+    # Aggiunta dei nodi al grafo
+    for ms in ms_names:
+        G.add_node(ms)
+
+    # Aggiunta degli archi al grafo
+    for key, ts in latency_dfs.items():
+        source, dest = key.split('_')
+        weight = ts['value'].mean()  # peso medio delle latenze
+        G.add_edge(source, dest, weight=weight)
+
+    # Disegno del grafo
+    pos = nx.drawing.nx_agraph.graphviz_layout(G, prog='dot')
+    nx.draw(G, pos, with_labels=True, font_size=10, node_size=800, node_color='lightblue', edge_color='gray', width=2, arrowsize=20, arrowstyle='->')
+    edge_labels = {(u, v): f'{d["weight"]:.2f}ms' for u, v, d in G.edges(data=True)}
+    nx.draw_networkx_edge_labels(G, pos, edge_labels, font_size=8)
+
+
+    plt.show()
+
+
+    # Calculate all weights in milliseconds for every microservice
+    # weight = RT inbound flows - RT outflows for every timestamp
+    weights_milliseconds = {ms_name: {} for ms_name in ms_names}
 
     for i in range(len(ms_names)):
         ms_name = ms_names[i]
 
-        for key in latencies_of_mscouple:
+        for key in latency_dfs:
             source, destination = key.split('_')
-            df = latencies_of_mscouple[key]
+            df = latency_dfs[key]
 
             if destination == ms_name:
                 for index, row in df.iterrows():
                     timestamp = row['timestamp']
                     if not pd.isnull(row['value']):
-                        if timestamp not in lc_of_ms[ms_name]:
-                            lc_of_ms[ms_name][timestamp] = row['value']
+                        if timestamp not in weights_milliseconds[ms_name]:
+                            weights_milliseconds[ms_name][timestamp] = row['value']
                         else:
-                            lc_of_ms[ms_name][timestamp] += row['value']
+                            weights_milliseconds[ms_name][timestamp] += row['value']
 
             if source == ms_name:
                 for index, row in df.iterrows():
                     timestamp = row['timestamp']
                     if not pd.isnull(row['value']):
-                        if timestamp not in lc_of_ms[ms_name]:
-                            lc_of_ms[ms_name][timestamp] = row['value']
+                        if timestamp not in weights_milliseconds[ms_name]:
+                            weights_milliseconds[ms_name][timestamp] = row['value']
                         else:
-                            lc_of_ms[ms_name][timestamp] -= row['value']
+                            weights_milliseconds[ms_name][timestamp] -= row['value']
 
+    print(weights_milliseconds)
     # Extract High Level latency loadgenerator --> frontend
     latency_general = latency_df[(latency_df['source_app'] == "loadgenerator") & (
         latency_df['destination_app'] == "frontend")]
 
     # Calculate ratio percentage and mean
-    # percentage result for a timestamp = (contribution / high level latency) *100
+    # percentage result for a timestamp = (weight / high level latency) *100
     weights_pg_ms={}
 
-    for ms_name in lc_of_ms:
+    for ms_name in weights_milliseconds:
         p = []
-        for row in lc_of_ms[ms_name]:
+        for row in weights_milliseconds[ms_name]:
             ts = latency_general[latency_general['timestamp'] == row]
             if len(ts) > 1:
                 ts = ts.nlargest(1, 'value')
 
-            result = ((((lc_of_ms[ms_name][row])/ts['value'].values))*100)
+            result = ((((weights_milliseconds[ms_name][row])/ts['value'].values))*100)
             if result.size > 0:
                 p.append(result[0])
 
@@ -121,10 +146,10 @@ if __name__ == '__main__':
                 "paymentservice", "loadgenerator", "productcatalogservice", "recommendationservice", "shippingservice", "redis-cart"]
     
     # Config 1
-    # main('./csv_results/config1/latency_by_app_custom_shape_23042023_144349.csv', ms_names)
+    main('./csv_results/config1/latency_by_app_custom_shape_23042023_144349.csv', ms_names)
     # main('./csv_results/latency_by_app_ramp_20ghfc230324114317.csv', ms_names)
 
     # # Config 2: HPA on Frontend
     # # main('./csv_results/latency_by_app_custom_shape_20230401142549.csv', ms_names)
-    main('./csv_results/latency_by_app_ramp_20230401144242.csv', ms_names)
+    # main('./csv_results/latency_by_app_ramp_20230401144242.csv', ms_names)
 

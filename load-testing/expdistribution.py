@@ -5,12 +5,12 @@ import matplotlib.pyplot as plt
 np.random.seed(42)
 
 # Generate 10000 samples from an exponential distribution with lambda=0.2
-lam = 0.2
+lam = 0.02
 data = np.random.exponential(scale=1/lam, size=10000)
 
 # Plot the PDF of the exponential distribution
 plt.figure(figsize=(8, 6))
-x = np.linspace(0, 40, 100)
+x = np.linspace(0, 400, 4000)
 pdf = lam * np.exp(-lam * x)
 
 plt.hist(data, bins=200, density=True, alpha=0.5)
