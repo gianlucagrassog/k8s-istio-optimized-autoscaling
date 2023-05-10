@@ -67,7 +67,7 @@ def main(deploy):
     logging.info('Starting load tests')
     p99_last, p90_last, p50_last, availability_last = 0,0,0,0
 
-    for num_replica in range(1, 10):
+    for num_replica in range(1, 5):
         logging.info(
             f'Starting load test with {num_replica} replica on {deploy}')
         time.sleep(15)
