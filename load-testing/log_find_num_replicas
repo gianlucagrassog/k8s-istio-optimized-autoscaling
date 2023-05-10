@@ -231,3 +231,109 @@
 2023-04-23 17:59:35,556 - INFO - Starting load test with 7 replica on frontend
 2023-04-23 17:59:50,569 - INFO - Scale Deploy frontend with 7 replicas
 2023-04-23 18:00:10,686 - INFO - Starting apply loadgenerator.yaml YAML
+2023-05-10 14:13:40,711 - INFO - Starting load tests
+2023-05-10 14:13:40,711 - INFO - Starting load test with 1 replica on checkoutservice
+2023-05-10 14:14:28,521 - INFO - Starting load tests
+2023-05-10 14:14:28,521 - INFO - Starting load test with 1 replica on checkoutservice
+2023-05-10 14:14:43,533 - INFO - Scale Deploy checkoutservice with 1 replicas
+2023-05-10 14:15:03,640 - INFO - Starting apply loadgenerator.yaml YAML
+2023-05-10 14:25:09,741 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-10 14:25:15,158 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 1616.1980765312744 ms
+ - 90th Percentile: 626.3218471405621 ms
+ - 50th Percentile: 117.94225646395353 ms
+ - Availability:1.0
+2023-05-10 14:25:15,158 - INFO - Starting load test with 2 replica on checkoutservice
+2023-05-10 14:25:30,173 - INFO - Scale Deploy checkoutservice with 2 replicas
+2023-05-10 14:25:50,282 - INFO - Starting apply loadgenerator.yaml YAML
+2023-05-10 14:35:55,645 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-10 14:36:01,062 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 986.8917102693141 ms
+ - 90th Percentile: 491.3104831670852 ms
+ - 50th Percentile: 124.91829877614245 ms
+ - Availability:1.0
+2023-05-10 14:36:01,063 - INFO - There were improvements in SLIs!
+2023-05-10 14:36:01,063 - INFO - - p99: -38.93745298921489%
+2023-05-10 14:36:01,063 - INFO - - p90: -21.556227774883453%
+2023-05-10 14:36:01,063 - INFO - - p50: 5.914794681176037%
+2023-05-10 14:36:01,063 - INFO - - availability: 5.914794681176037%
+2023-05-10 14:36:01,063 - INFO - Starting load test with 3 replica on checkoutservice
+2023-05-10 14:36:16,078 - INFO - Scale Deploy checkoutservice with 3 replicas
+2023-05-10 14:36:36,189 - INFO - Starting apply loadgenerator.yaml YAML
+2023-05-10 14:46:41,554 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-10 14:46:47,096 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 1385.074056622894 ms
+ - 90th Percentile: 521.9376026800871 ms
+ - 50th Percentile: 109.02639480566808 ms
+ - Availability:1.0
+2023-05-10 14:46:47,096 - INFO - There were improvements in SLIs!
+2023-05-10 14:46:47,096 - INFO - - p99: 40.347116325956314%
+2023-05-10 14:46:47,096 - INFO - - p90: 6.233760638603403%
+2023-05-10 14:46:47,096 - INFO - - p50: -12.721838294446492%
+2023-05-10 14:46:47,096 - INFO - - availability: -12.721838294446492%
+2023-05-10 14:46:47,096 - INFO - Starting load test with 4 replica on checkoutservice
+2023-05-10 14:47:02,109 - INFO - Scale Deploy checkoutservice with 4 replicas
+2023-05-10 14:47:22,241 - INFO - Starting apply loadgenerator.yaml YAML
+2023-05-10 14:57:27,745 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-10 14:57:33,290 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 1354.8827731342233 ms
+ - 90th Percentile: 509.9560986610879 ms
+ - 50th Percentile: 120.97874509141317 ms
+ - Availability:1.0
+2023-05-10 14:57:33,291 - INFO - There were improvements in SLIs!
+2023-05-10 14:57:33,291 - INFO - - p99: -2.179759511363854%
+2023-05-10 14:57:33,291 - INFO - - p90: -2.295581685909517%
+2023-05-10 14:57:33,291 - INFO - - p50: 10.962804288859891%
+2023-05-10 14:57:33,291 - INFO - - availability: 10.962804288859891%
+2023-05-10 14:58:36,511 - INFO - Starting load tests
+2023-05-10 14:58:36,511 - INFO - Starting load test with 1 replica on currencyservice
+2023-05-10 14:58:51,525 - INFO - Scale Deploy currencyservice with 1 replicas
+2023-05-10 14:59:11,633 - INFO - Starting apply loadgenerator.yaml YAML
+2023-05-10 15:09:17,009 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-10 15:09:22,605 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 1092.5277299967934 ms
+ - 90th Percentile: 480.54366027733363 ms
+ - 50th Percentile: 105.13616593717602 ms
+ - Availability:1.0
+2023-05-10 15:09:22,605 - INFO - Starting load test with 2 replica on currencyservice
+2023-05-10 15:09:37,617 - INFO - Scale Deploy currencyservice with 2 replicas
+2023-05-10 15:09:57,773 - INFO - Starting apply loadgenerator.yaml YAML
+2023-05-10 15:20:03,154 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-10 15:20:08,678 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 616.4074774448204 ms
+ - 90th Percentile: 249.63597134216968 ms
+ - 50th Percentile: 68.25166038923197 ms
+ - Availability:1.0
+2023-05-10 15:20:08,678 - INFO - There were improvements in SLIs!
+2023-05-10 15:20:08,678 - INFO - - p99: -43.57969500264953%
+2023-05-10 15:20:08,678 - INFO - - p90: -48.051344346505665%
+2023-05-10 15:20:08,678 - INFO - - p50: -35.082604752758755%
+2023-05-10 15:20:08,678 - INFO - - availability: -35.082604752758755%
+2023-05-10 15:20:08,678 - INFO - Starting load test with 3 replica on currencyservice
+2023-05-10 15:20:23,690 - INFO - Scale Deploy currencyservice with 3 replicas
+2023-05-10 15:20:43,797 - INFO - Starting apply loadgenerator.yaml YAML
+2023-05-10 15:30:49,161 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-10 15:30:54,613 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 811.173642560303 ms
+ - 90th Percentile: 319.8736429339415 ms
+ - 50th Percentile: 70.61243832401111 ms
+ - Availability:1.0
+2023-05-10 15:30:54,613 - INFO - There were no improvements in SLIs.
+2023-05-10 15:30:54,613 - INFO - - p99: 31.59698287938399%
+2023-05-10 15:30:54,613 - INFO - - p90: 28.136037933210677%
+2023-05-10 15:30:54,613 - INFO - - p50: 3.458931140013108%
+2023-05-10 15:30:54,613 - INFO - - availability: 3.458931140013108%
+2023-05-10 15:30:54,613 - INFO - Starting load test with 4 replica on currencyservice
+2023-05-10 15:31:09,629 - INFO - Scale Deploy currencyservice with 4 replicas
+2023-05-10 15:31:29,739 - INFO - Starting apply loadgenerator.yaml YAML
+2023-05-10 15:41:35,097 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-10 15:41:40,519 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 718.5026304971415 ms
+ - 90th Percentile: 315.66482751387366 ms
+ - 50th Percentile: 68.0106756017392 ms
+ - Availability:1.0
+2023-05-10 15:41:40,520 - INFO - There were improvements in SLIs!
+2023-05-10 15:41:40,520 - INFO - - p99: -11.424312527052107%
+2023-05-10 15:41:40,520 - INFO - - p90: -1.3157743731130116%
+2023-05-10 15:41:40,520 - INFO - - p50: -3.6845671726183813%
+2023-05-10 15:41:40,520 - INFO - - availability: -3.6845671726183813%
