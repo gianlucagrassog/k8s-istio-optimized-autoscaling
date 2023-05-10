@@ -32,11 +32,10 @@ def plot_all_latency(latency_df,ms_names):
 
 def plot_by_destination(latency_df,destination, ms_names):
     latency_dfs = {}
-
     for source in ms_names:
-        ts = latency_df[(latency_df['source_app'] == source) & (
-            latency_df['destination_app'] == destination)]
+        ts = latency_df[(latency_df['source_app'] == source) & (latency_df['destination_app'] == destination)]
         
+   
         key = source + '_' + destination
         if not ts.empty:
             print(ts.mean())
@@ -44,12 +43,13 @@ def plot_by_destination(latency_df,destination, ms_names):
 
     for key in latency_dfs:
         df = latency_dfs[key]
+
         source, destination = key.split('_')
         plt.plot(df['timestamp'], df['value'], label=f'{source} to {destination}')
 
     plt.xlabel('Timestamp')
     plt.ylabel('Latency (ms)')
-    plt.legend()
+    # plt.legend()
     plt.show()
 
 
@@ -64,10 +64,12 @@ def compare_latencies(csv_1,sim_name1,csv_2,sim_name2):
  
     ts2 = latency_df_2[(latency_df_2['source_app'] == 'loadgenerator') & (
         latency_df_2['destination_app'] == 'frontend')]
-    # Drop Rows
-    ts1 = ts1[:-1]
+    
 
-    time_range = np.arange(5, 1200, 5)
+    # # Drop Rows
+    # ts1 = ts1[:-1]
+
+    time_range = np.arange(5, 1500, 5)
 
     fig = plt.figure(figsize=(15, 15))
     ax1 = fig.add_subplot(111)

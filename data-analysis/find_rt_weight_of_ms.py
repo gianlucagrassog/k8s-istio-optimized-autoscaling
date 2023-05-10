@@ -125,6 +125,6 @@ if __name__ == '__main__':
     # main('./csv_results/latency_by_app_ramp_20ghfc230324114317.csv', ms_names)
 
     # # Config 2: HPA on Frontend
-    # # main('./csv_results/latency_by_app_custom_shape_20230401142549.csv', ms_names)
-    main('./csv_results/latency_by_app_ramp_20230401144242.csv', ms_names)
+    main('./csv_results/config2/latency_by_app_custom_shape_09052023_203706.csv', ms_names)
+    # main('./csv_results/latency_by_app_ramp_20230401144242.csv', ms_names)
 
