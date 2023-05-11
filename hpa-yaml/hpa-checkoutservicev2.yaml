@@ -19,7 +19,7 @@ spec:
         name: http_requests_restime_2m
       target:
         type: AverageValue
-        averageValue: 20000m # 200m
+        averageValue: 4500m # 200m
 
   scaleTargetRef:
     apiVersion: apps/v1
