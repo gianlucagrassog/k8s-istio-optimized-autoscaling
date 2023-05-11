@@ -42,7 +42,7 @@ rules:
         as: "restime_50_percentile"
       metricsQuery: 'histogram_quantile(0.50,rate(<<.Series>>{<<.LabelMatchers>>,response_code="200", response_flags="-", source_app=~"loadgenerator",destination_app=~"frontend"}[30s]))'
 
-    - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter="source"}'
+    - seriesQuery: '{__name__=~"istio_request_duration_milliseconds_.*",namespace!="",pod!="",reporter="destination"}'
       seriesFilters:
       - isNot: .*bucket
       resources:
