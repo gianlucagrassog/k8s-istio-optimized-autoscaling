@@ -104,8 +104,8 @@ def main():
     collect_save_metric(LATENCY_BY_APP_30S, start_time, timestamp,f'latency_by_app_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
     collect_save_metric(CPU_PERCENTANCE_BY_POD, start_time, timestamp,f'cpu_percentance_by_pod_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
     # collect_save_metric(MEMORY_USAGE_BY_POD, start_time, timestamp,f'memory_usage_by_pod_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
-    # collect_save_metric(REPLICAS_AVAILABLE, start_time, timestamp,f'replicas_available_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
-    # collect_save_metric(NODE_CPU_PERCENTANCE, start_time, timestamp,f'node_cpu_percentance_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
+    collect_save_metric(REPLICAS_AVAILABLE, start_time, timestamp,f'replicas_available_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
+    collect_save_metric(NODE_CPU_PERCENTANCE, start_time, timestamp,f'node_cpu_percentance_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
         
     collect_save_metric(HISTO_50, start_time, timestamp, f'histogram_quantile_0_50_{timestamp.strftime("%d%m%Y_%H%M%S")}',prometheus)
     collect_save_metric(HISTO_90, start_time, timestamp, f'histogram_quantile_0_90_{timestamp.strftime("%d%m%Y_%H%M%S")}',prometheus)
