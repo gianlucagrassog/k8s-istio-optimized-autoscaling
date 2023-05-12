@@ -36,7 +36,7 @@ spec:
         name: restime_50_percentile
       target:
         type: AverageValue
-        averageValue: 80000m # 80ms
+        averageValue: 100000m # 100ms
   
   scaleTargetRef:
     apiVersion: apps/v1
