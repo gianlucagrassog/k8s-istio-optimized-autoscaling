@@ -30,7 +30,7 @@ def plot_all_latency(latency_df,ms_names):
     plt.show()
 
 
-def plot_by_destination(latency_df,destination, ms_names):
+def plot_by_destination(latency_df,destination, ms_names,time_range):
     latency_dfs = {}
     for source in ms_names:
         ts = latency_df[(latency_df['source_app'] == source) & (latency_df['destination_app'] == destination)]
@@ -38,22 +38,29 @@ def plot_by_destination(latency_df,destination, ms_names):
    
         key = source + '_' + destination
         if not ts.empty:
+            print(ts.min())
+            print(ts.max())
             print(ts.mean())
             latency_dfs[key] = ts
 
     for key in latency_dfs:
         df = latency_dfs[key]
-
+        print(df.min())
+        print(df.max())
+        print(df.mean())
+        df = df[:-1]
         source, destination = key.split('_')
-        plt.plot(df['timestamp'], df['value'], label=f'{source} to {destination}')
+        plt.figure(figsize=(6, 5))
+        plt.plot(time_range, df['value'], label=f'{source} to {destination}')
+    
+    
+        plt.xlabel('Time (s)')
+        plt.ylabel('Latency (ms)')
+        plt.legend()
+        plt.show()
 
-    plt.xlabel('Timestamp')
-    plt.ylabel('Latency (ms)')
-    # plt.legend()
-    plt.show()
 
-
-def compare_latencies(csv_1,sim_name1,csv_2,sim_name2):
+def compare_latencies(csv_1,sim_name1,csv_2,sim_name2,time_range):
 
     # Read data from csv
     latency_df_1 = read_data(csv_1)
@@ -67,19 +74,18 @@ def compare_latencies(csv_1,sim_name1,csv_2,sim_name2):
     
 
     # # Drop Rows
-    # ts1 = ts1[:-1]
+    ts2 = ts2[:-1]
 
-    time_range = np.arange(5, 1500, 5)
-
-    fig = plt.figure(figsize=(15, 15))
+    
+    fig = plt.figure(figsize=(6, 5))
     ax1 = fig.add_subplot(111)
-    ax1.plot(time_range, ts1['value'], label=f'RT 1:{sim_name1}')
-    ax1.plot(time_range, ts2['value'], label=f'RT 2:{sim_name2}')
+    ax1.plot(time_range, ts1['value'], label=f'{sim_name1}')
+    ax1.plot(time_range, ts2['value'], label=f'{sim_name2}')
     ax1.set_xlabel('Time (s)')
     ax1.set_ylabel('Response Time (ms)')
 
     # make a legend for both plots
-    leg = ax1.legend()
+    leg = ax1.legend(loc='upper left')
     # set the linewidth of each legend object
     for legobj in leg.legendHandles:
         legobj.set_linewidth(2.0)
