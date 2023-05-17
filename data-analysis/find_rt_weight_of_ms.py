@@ -63,13 +63,23 @@ def find_weight_ms(latency_df, ms_names):
                         else:
                             lc_of_ms[ms_name][timestamp] -= row['value']
 
+    lc_df = pd.DataFrame.from_dict(lc_of_ms)
+    lc_df = lc_df.drop(['frontend', 'loadgenerator'], axis=1)
+
+    # Plot lc_of_ms
+    lc_df.plot(figsize=(10, 6))
+    plt.xlabel('Timestamp')
+    plt.ylabel('Latency Contribution (ms)')
+    plt.title('Latency Contribution of Microservices over Time')
+    plt.legend()
+    plt.show()
     # Extract High Level latency loadgenerator --> frontend
     latency_general = latency_df[(latency_df['source_app'] == "loadgenerator") & (
         latency_df['destination_app'] == "frontend")]
 
     # Calculate ratio percentage and mean
     # percentage result for a timestamp = (contribution / high level latency) *100
-    weights_pg_ms={}
+    pg_lc_ms={}
 
     for ms_name in lc_of_ms:
         p = []
@@ -87,21 +97,21 @@ def find_weight_ms(latency_df, ms_names):
         if p.size != 0 and ms_name!='loadgenerator':
             # Calculate Percentance weight mean
             mean = p.mean()
-            weights_pg_ms[ms_name] = mean
+            pg_lc_ms[ms_name] = mean
             # logging.info(f'{ms_name} - '+" {:.2f} %".format(mean))
         
-    return weights_pg_ms
+    return pg_lc_ms
 
-def top_three_ms(weights_pg_ms):
-    x=list(weights_pg_ms.values())
+def top_three_ms(pg_lc_ms):
+    x=list(pg_lc_ms.values())
     x.sort(reverse=True)
     x=x[:3]
     print("----- Top three MS ------")
     print("Microservice Name : Value")
     for i in x:
-        for j in weights_pg_ms.keys():
-            if(weights_pg_ms[j]==i):
-                print(str(j)+" : "+str(" {:.2f} %".format(weights_pg_ms[j])))
+        for j in pg_lc_ms.keys():
+            if(pg_lc_ms[j]==i):
+                print(str(j)+" : "+str(" {:.2f} %".format(pg_lc_ms[j])))
     
 
 def main(latency_by_app_csv, ms_names):

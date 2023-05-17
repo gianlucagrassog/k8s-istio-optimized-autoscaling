@@ -19,7 +19,7 @@ def main( ms_names):
     # latency_df = read_data('./csv_results/config1/latency_by_app_ramp_23042023_145806.csv')
     # plot_cpu('./csv_results/config1/cpu_percentance_by_pod_custom_shape_23042023_144349.csv', ms_names)
     # #  Plot all MS Latency
-    # plot_all_latency(latency_df, ms_names)
+ 
     # plot_by_destination(latency_df,"frontend",ms_names)
 
     # # Compare Two Latency config 1 e 2
@@ -43,20 +43,21 @@ def main( ms_names):
     #                   './csv_results/post_export_1.2_replicas_available_custom_shape_2023-04-03 10_40_16.800430.csv',
     #                   'Configurazione 2')
      #### config 2
-    # latency_df = read_data('./csv_results/config2/latency_by_app_custom_shape_09052023_203706.csv')
+    latency_df = read_data('./csv_results/config2/latency_by_app_custom_shape_09052023_203706.csv')
+    plot_all_latency(latency_df, ms_names)
     # plot_by_destination(latency_df,"frontend",ms_names,np.arange(5, 1500, 5))     
     # latency_df = read_data('./csv_results/config2/latency_by_app_ramp_09052023_205045.csv')
     # plot_by_destination(latency_df,"frontend",ms_names,np.arange(5, 600, 5))    
 
     #### config 3
-    latency_df = read_data('./csv_results/config3/3/latency_by_app_custom_shape_11052023_090137.csv')
+    latency_df = read_data('./csv_results/config3/3/histogram_quantile_0_50_11052023_090137.csv')
     plot_by_destination(latency_df,"frontend",ms_names,np.arange(10, 1500, 5))     
     latency_df = read_data('./csv_results/config3/3/latency_by_app_ramp_11052023_091446.csv')
     plot_by_destination(latency_df,"frontend",ms_names,np.arange(15, 600, 5))    
 
 if __name__ == '__main__':
-    # ms_names = ["frontend", "adservice", "cartservice", "checkoutservice", "currencyservice", "emailservice",
-    #             "paymentservice", "productcatalogservice", "recommendationservice", "shippingservice"]
     ms_names = ["frontend", "adservice", "cartservice", "checkoutservice", "currencyservice", "emailservice",
-                "paymentservice", "productcatalogservice", "recommendationservice", "shippingservice","loadgenerator"]
+                "paymentservice", "productcatalogservice", "recommendationservice", "shippingservice"]
+    # ms_names = ["frontend", "adservice", "cartservice", "checkoutservice", "currencyservice", "emailservice",
+    #             "paymentservice", "productcatalogservice", "recommendationservice", "shippingservice","loadgenerator"]
     main(ms_names)

@@ -26,7 +26,7 @@ def plot_all_latency(latency_df,ms_names):
 
     plt.xlabel('timestamp')
     plt.ylabel('Latency (ms)')
-    plt.legend()
+    plt.legend(fontsize='small')
     plt.show()
 
 
