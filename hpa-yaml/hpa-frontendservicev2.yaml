@@ -8,6 +8,7 @@ spec:
   maxReplicas: 5
   behavior:       
     scaleDown:
+      stabilizationWindowSeconds: 60
       policies:
       - type: Pods
         value: 1
@@ -36,7 +37,7 @@ spec:
         name: restime_50_percentile
       target:
         type: AverageValue
-        averageValue: 100000m # 100ms
+        averageValue: 80000m # 80ms
   
   scaleTargetRef:
     apiVersion: apps/v1
