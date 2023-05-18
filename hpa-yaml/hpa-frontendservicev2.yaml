@@ -12,7 +12,7 @@ spec:
       policies:
       - type: Pods
         value: 1
-        periodSeconds: 240 
+        periodSeconds: 180 
   metrics:
 
   - type: Pods
