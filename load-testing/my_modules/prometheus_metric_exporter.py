@@ -53,9 +53,6 @@ if __name__ == '__main__':
     prometheus_url = "http://localhost:9090"
     prometheus = PrometheusConnect(url=prometheus_url, disable_ssl=True)
 
-    start_time = parse_datetime("2023-03-24 11:56:54")
-    end_time = parse_datetime("2023-03-24 12:16:59")
-
     start_time1 = parse_datetime("2023-05-18 14:42:07")
     end_time1 = parse_datetime("2023-05-18 15:07:07")
 
@@ -63,7 +60,7 @@ if __name__ == '__main__':
     # collect_save_metric(REPLICAS_AVAILABLE, start_time, end_time, f'{name}.1_replicas_available_custom_shape_{datetime.now()}',prometheus)
     # collect_save_metric(REPLICAS_AVAILABLE, start_time1, end_time1, f'{name}.2_replicas_available_custom_shape_{datetime.now()}',prometheus)
     timestamp = end_time1
-
+    start_time = start_time1
     collect_save_metric(LATENCY_BY_APP_30S, start_time, timestamp,f'latency_by_app_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
     collect_save_metric(CPU_PERCENTANCE_BY_POD, start_time, timestamp,f'cpu_percentance_by_pod_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
     # collect_save_metric(MEMORY_USAGE_BY_POD, start_time, timestamp,f'memory_usage_by_pod_custom_shape_{timestamp.strftime("%d%m%Y_%H%M%S")}', prometheus)
