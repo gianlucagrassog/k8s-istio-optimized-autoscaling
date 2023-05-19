@@ -14,7 +14,7 @@ from prometheus_api_client.utils import parse_datetime
 import logging
 import pandas as pd
 
-from promql_constants import *
+# from promql_constants import *
 
 
 def collect_metric(query, start_time, end_time, prom):
