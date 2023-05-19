@@ -74,7 +74,7 @@ def compare_latencies(csv_1,sim_name1,csv_2,sim_name2,time_range):
     
 
     # # Drop Rows
-    ts2 = ts2[:-1]
+    
 
     
     fig = plt.figure(figsize=(6, 5))
@@ -94,7 +94,7 @@ def compare_latencies(csv_1,sim_name1,csv_2,sim_name2,time_range):
 def filter_data_replicas(df):
     return df[(df['deployment'] == 'frontend')]
 
-def compare_replicas(csv_1,sim_name1,csv_2,sim_name2):
+def compare_replicas(csv_1,sim_name1,csv_2,sim_name2,time_range):
 
     # Read data from csv
     replicas_df_1 = read_data(csv_1)
@@ -106,8 +106,7 @@ def compare_replicas(csv_1,sim_name1,csv_2,sim_name2):
     # Drop Rows
     replicas_1= replicas_1[:-3]
     replicas_2= replicas_2[:-3]
-    
-    time_range = np.arange(5, 1200, 5)
+
 
     fig = plt.figure(figsize=(15, 15))
     ax1 = fig.add_subplot(111)
