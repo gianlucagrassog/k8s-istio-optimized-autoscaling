@@ -8,7 +8,7 @@ spec:
   maxReplicas: 2
   behavior:
     scaleDown:
-      stabilizationWindowSeconds: 120
+      stabilizationWindowSeconds: 60
       policies:
       - type: Pods
         value: 1
@@ -20,7 +20,7 @@ spec:
         name: http_requests_restime_2m
       target:
         type: AverageValue
-        averageValue: 4500m # 200m
+        averageValue: 6100m # 200m
 
   scaleTargetRef:
     apiVersion: apps/v1

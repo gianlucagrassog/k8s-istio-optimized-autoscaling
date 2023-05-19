@@ -360,3 +360,34 @@
 2023-05-18 10:48:48,368 - INFO - Collect Metric and Save Result
 2023-05-18 10:48:48,408 - INFO - Collect Metric and Save Result
 2023-05-18 10:48:48,444 - INFO - Load test finished
+2023-05-18 14:03:24,704 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-18 14:03:39,717 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-18 14:28:45,208 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-18 14:28:50,810 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 417.5423489651231 ms
+ - 90th Percentile: 201.90372721145349 ms
+ - 50th Percentile: 49.597406502706754 ms
+ - Availability:1.0
+2023-05-18 14:28:50,811 - INFO - Checking for 5xx errors with threshold 3
+2023-05-18 14:28:50,817 - INFO - Retrieve and save a metrics values 
+2023-05-18 14:28:50,817 - INFO - Collect Metric and Save Result
+2023-05-18 14:28:50,984 - INFO - Collect Metric and Save Result
+2023-05-18 14:28:51,137 - INFO - Collect Metric and Save Result
+2023-05-18 14:28:51,189 - INFO - Collect Metric and Save Result
+2023-05-18 14:28:51,209 - INFO - Collect Metric and Save Result
+2023-05-18 14:28:51,262 - INFO - Collect Metric and Save Result
+2023-05-18 14:28:51,308 - INFO - Collect Metric and Save Result
+2023-05-18 14:28:51,359 - INFO - Load test finished
+2023-05-18 14:41:41,155 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-18 14:41:56,168 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-18 15:07:01,537 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-18 15:07:07,055 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 417.3213399381041 ms
+ - 90th Percentile: 197.31385027386767 ms
+ - 50th Percentile: 48.276420104549786 ms
+ - Availability:1.0
+2023-05-18 15:07:07,056 - INFO - Checking for 5xx errors with threshold 3
+2023-05-18 15:07:07,062 - INFO - Retrieve and save a metrics values 
+2023-05-18 15:07:07,062 - INFO - Collect Metric and Save Result
+2023-05-19 07:37:58,095 - INFO - Starting load test with custom shape signal for 25 Minutes
+2023-05-19 07:38:13,111 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
