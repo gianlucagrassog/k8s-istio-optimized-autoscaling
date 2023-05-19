@@ -391,3 +391,19 @@
 2023-05-18 15:07:07,062 - INFO - Collect Metric and Save Result
 2023-05-19 07:37:58,095 - INFO - Starting load test with custom shape signal for 25 Minutes
 2023-05-19 07:38:13,111 - INFO - Starting apply loadgenerator-custom-shape.yaml YAML
+2023-05-19 08:03:18,495 - INFO - Starting apply loadgenerator-reset.yaml YAML
+2023-05-19 08:03:23,951 - INFO - ##### SLI Check ##### 
+ - 99th Percentile: 423.188062590766 ms
+ - 90th Percentile: 199.74569372584787 ms
+ - 50th Percentile: 49.99677972391954 ms
+ - Availability:1.0
+2023-05-19 08:03:23,952 - INFO - Checking for 5xx errors with threshold 3
+2023-05-19 08:03:23,955 - INFO - Retrieve and save a metrics values 
+2023-05-19 08:03:23,956 - INFO - Collect Metric and Save Result
+2023-05-19 08:03:24,078 - INFO - Collect Metric and Save Result
+2023-05-19 08:03:24,236 - INFO - Collect Metric and Save Result
+2023-05-19 08:03:24,285 - INFO - Collect Metric and Save Result
+2023-05-19 08:03:24,304 - INFO - Collect Metric and Save Result
+2023-05-19 08:03:24,341 - INFO - Collect Metric and Save Result
+2023-05-19 08:03:24,404 - INFO - Collect Metric and Save Result
+2023-05-19 08:03:24,443 - INFO - Load test finished
