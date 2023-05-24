@@ -9,7 +9,7 @@ This Repo provides an in-depth analysis of the challenges involved in optimizing
 * [Requirements](#requirements) 
 * [Solutions](#solutions)
 	* [Load Testing Algorithms execution](#load-testing-algorithms-execution)
-	* [Algorithms 1 & 2](#algorithms-1-&-2)
+	* [Algorithms 1 & 2](#algorithms-1--2)
 	* [HPA implementation with Custom Metrics](#hpa-implementation-with-custom-metrics)
 	* [Results](#setup)
 
