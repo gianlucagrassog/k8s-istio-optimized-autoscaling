@@ -231,7 +231,7 @@ It was decided to use the application's SLIs (Service Level Indicators) as Custo
 ## Results
 
 ![Figure_10](https://github.com/gianlucagrassog/masterthesis-gg/assets/93397222/20e8150c-cf8f-43c0-96e2-f948752dd421 | width=100)
-<a href="url"><img src="https://github.com/gianlucagrassog/k8s-istio-optimized-autoscaling/assets/93397222/67ce9959-cf8d-43dd-bf6b-c87ff82b8ed8" align="left" height="150"  ></a>
+<a href="url"><img src="https://github.com/gianlucagrassog/k8s-istio-optimized-autoscaling/assets/93397222/67ce9959-cf8d-43dd-bf6b-c87ff82b8ed8" align="left" height="300"  ></a>
 
 ![Figure_4](https://github.com/gianlucagrassog/k8s-istio-optimized-autoscaling/assets/93397222/67ce9959-cf8d-43dd-bf6b-c87ff82b8ed8  | width=100 )
 ![Figure_10](https://github.com/gianlucagrassog/k8s-istio-optimized-autoscaling/assets/93397222/86a05db7-8fa9-469a-8e45-3f86dc4817c2 | width=100)
