@@ -111,7 +111,7 @@ Inside the *hpa-yaml* folder there are the HPA configuration files applied to th
 	minikube addons enable metrics-server
 	```
 		
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Requirements 
 
@@ -163,7 +163,7 @@ The first step is to *load test* the application using two different signals usi
 
 
 At the end of the load test, both algorithms export Prometheus metrics and the SLI (Service level Indicator) obtained in the simulation. These results can be analysed in order to make decisions on autoscaling strategy.
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Algorithms 1 & 2
 - **`find_rt_weight_of_ms.py`**
@@ -198,7 +198,7 @@ At the end of the load test, both algorithms export Prometheus metrics and the S
 - **Configure HPAs**
 	
 	An HPA autoscaler can be applied, once the microservice with the highest impact on latency and the maximum number of pods to assign to it is obtained.
-
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## HPA implementation with Custom Metrics
 
