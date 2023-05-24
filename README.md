@@ -28,7 +28,7 @@ This Repo provides an in-depth analysis of the challenges involved in optimizing
 - **Data Analysis** 
 The folder *data-analysis* contains the files needed for analyze the results of the load tests.
 	 * **`find_rt_weight_of_ms.py`**: This algorithm allows to find out the impact of a microservice on latency, i.e. the percentage weight on high-level latency.
-	 * **`data_plot.py`** and **`histograms.py`**: Thanks to this scrypts, data obtained as results of load testing scrypts can be plotted.
+	 * Data obtained as results of load tests can be plotted with the files in this folder.
 
 - **Load Generator Images**
 Inside the *loadgenerator-src* folder there is the code of the load generator images used for load testing of the application.
