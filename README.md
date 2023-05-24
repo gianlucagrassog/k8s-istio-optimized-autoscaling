@@ -9,7 +9,7 @@ This Repo provides an in-depth analysis of the challenges involved in optimizing
 * [Requirements](#requirements) 
 * [Solutions](#solutions)
 	* [Algorithms execution](#algorithms-execution)
-	* [HPA implementation with Custom Metrics](#experiment)
+	* [HPA implementation with Custom Metrics](#hpa-implementation-with-custom-metrics)
 	* [Results](#setup)
 
 
@@ -230,6 +230,9 @@ It was decided to use the application's SLIs (Service Level Indicators) as Custo
 ## Results
 
 ![Figure_10](https://github.com/gianlucagrassog/masterthesis-gg/assets/93397222/20e8150c-cf8f-43c0-96e2-f948752dd421)
+![Figure_4](https://github.com/gianlucagrassog/k8s-istio-optimized-autoscaling/assets/93397222/67ce9959-cf8d-43dd-bf6b-c87ff82b8ed8)
+![Figure_10](https://github.com/gianlucagrassog/k8s-istio-optimized-autoscaling/assets/93397222/86a05db7-8fa9-469a-8e45-3f86dc4817c2)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
