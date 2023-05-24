@@ -133,7 +133,7 @@ Inside the *hpa-yaml* folder there are the HPA configuration files applied to th
 - *Data Analysis Algoritms*
 	* Install Python Libraries: `pandas`, `numpy`, `matplotlib`, `seaborn`.
 ## Solutions
-### Algorithms execution
+### Load Testing Algorithms execution
 
 The first step is to *load test* the application using two different signals using the two scripts:
 - **`load_testing_custom_shape.py`** e **`load_testing_ramp.py`**
@@ -165,7 +165,7 @@ The first step is to *load test* the application using two different signals usi
 At the end of the load test, both algorithms export Prometheus metrics and the SLI (Service level Indicator) obtained in the simulation. These results can be analysed in order to make decisions on autoscaling strategy.
 
 
-
+### Algorithms 1 & 2
 - **`find_rt_weight_of_ms.py`**
 
 	From the results of load testing scripts (*latency_by_app*), it analyses the latencies of flows between *pairs of microservices*.
